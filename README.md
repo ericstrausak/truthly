@@ -24,66 +24,139 @@ Ein kurzer Text als Intro
 
 ## Explore-Board
 ### TRENDS & TECHNOLOGIE
-> Im Feld Trends & Technologien notieren wir Informationen über Megatrends sowie soziokulturelle Trends, Konsum- und Zeitgeisttrends, die einen Einfluss auf unser Projekt haben (könnten). Auch unsere Kenntnisse über aktuelle Technologien und Entwicklungen fließen hier hinein. Vor allem im Bereich der digitalen Innovationen sind diese wichtig.
+- Künstliche Intelligenz (KI): Automatisierte Faktenchecks mithilfe eines KI-Modells über die Spring AI-API.
+- Blockchain-Technologie: Möglichkeit zur fälschungssicheren Speicherung von Quellenangaben.
+- Personalisierte Feeds: Machine Learning für individualisierte News-Empfehlungen.
+- Digitale Zahlungsmodelle: Nutzung von Krypto-Zahlungen oder Micropayments für abonnementbasierte Inhalte.
+- Dezentralisierung: Nutzung von Open-Source-Plattformen zur Vermeidung von Zensur.
+- Progressive Web Apps (PWA): Offline-fähige App-Version für bessere Benutzererfahrung.
 
 ### POTENTIELLE PARTNER & WETTBEWERB
-> Im Feld Potenzielle Partnerschaften & Wettbewerb stehen alle Informationen über relevante Partnerschaften und Wettbewerber in dem Markt, den wir innovieren wollen.
-
+> Wettbewerber:
+- Traditionelle Nachrichtenportale (z. B. Spiegel, BBC, The Guardian).
+- Alternative Medienplattformen (z. B. Correctiv, Substack, Mastodon als Social-Media-Alternative).
+- KI-gestützte News-Services (z. B. Google News KI-Feeds).
+> Potenzielle Partner:
+- Faktencheck-Organisationen (z. B. Snopes, Mimikama, Correctiv).
+- NGOs für unabhängigen Journalismus (Reporter ohne Grenzen, Open Knowledge Foundation).
+- Technologie-Partner für KI-Modelle und Cloud-Hosting (Azure, MongoDB Atlas).
 ### FAKTEN
-> Das Feld Fakten ist gewissermassen unser Joker. Hier steht alles, was sich in den anderen Feldern nicht einordnen lässt, aber irgendwie mit unserem Recherchethema zu tun hat.
+- Spring Boot + MongoDB Atlas als Technologie-Stack für das Backend.
+- Frontend mit Svelte für eine schnelle, reaktionsfähige Benutzeroberfläche.
+- Deployment auf Azure App Service mit Docker & GitHub Actions.
+- Authentifizierung über Auth0, um unterschiedliche Benutzerrollen zu ermöglichen.
+- Abo-Modell als Finanzierungsmöglichkeit für unabhängigen Journalismus.
+- Community-Bewertungen für Artikel (Leser können Glaubwürdigkeit bewerten).
+> Nutzerrollen:
+- Leser (Artikel konsumieren, abonnieren).
+- Journalisten (Artikel schreiben, veröffentlichen, anonyme Beiträge erstellen).
+- Faktenprüfer (Beiträge verifizieren).
+
 
 ### POTENZIALFELDER
-> Unter Potentialfelder notieren wir wiederkehrende Themenschwerpunkte, die unsere User beschäftigen. Diese sind erste Hinweise auf konkrete Bedürfnisse und entpuppen sich oftmals als Vorstufe von Ideen, die wir später mithilfe des CREATE-Moduls und seiner Methoden herausarbeiten können.
+- Vertrauenswürdige Berichterstattung: Verlässliche News durch Faktenprüfung.
+- Mitsprache der Community: Nutzer können Artikel bewerten oder kommentieren.
+- Schutz von Journalisten: Möglichkeit, Artikel anonym zu veröffentlichen.
+- Individuelle Feeds: Algorithmen zur personalisierten News-Auswahl.
+- Alternative Finanzierungsmodelle: Spenden, Crowdfunding, Krypto-Micropayments.
 
 ### USER
-> Das Feld User enthält die Merkmale unseren künftigen Usern. Da die Informationen in diesem Bereich eng mit unseren Notizen in den Feldern Erkenntnisse, Bedürfnisse und Touchpoints zusammenhängen, teilen sich diese vier Rubriken den größten Abschnitt des EXPLORE-Moduls.
+> Leser:
+- Suchen unabhängige Nachrichten, fernab von Mainstream-Medien.
+- Wollen eine personalisierte Feed-Funktion.
+- Interessieren sich für transparente Quellenangaben.
+> Journalisten:
+- Möchten ohne redaktionelle Einschränkungen publizieren.
+- Brauchen sichere Kanäle für investigativen Journalismus.
+> Faktenchecker:
+- Überprüfen Inhalte und kennzeichnen Falschmeldungen.
+- Arbeiten mit KI-Unterstützung, um Fake News schneller zu entlarven.
 
 ### BEDÜRFNISSE
-> Was wir unter Bedürfnisse notieren, müssen wir mit unserer Innovation (auf)lösen. Die Kombination von User und Bedürfnis ist der Fixpunkt für die Entwicklung von neuen digitalen Produkten und Services.
+- Zugang zu faktenbasierten, unabhängigen Nachrichten.
+- Sicherheit für Journalisten, um auch brisante Themen zu veröffentlichen.
+- Transparenz bei Informationen durch Blockchain oder Faktenchecks.
+- Nutzerfreundlichkeit: Eine moderne, intuitive Plattform.
 
 ### ERKENNTNISSE
-> Das Feld Erkenntnisse enthält Informationen, die sowohl die physische als auch die emotionale Lebenswelt unserer User betreffen. Hier notieren wir auch passende Analogien, die uns eine neue Perspektive für unser Recherchethema ermöglichen. Oder Analogien, die unsere Empathie für das Recherchethema vertiefen.
-
+- Fake News und Desinformation sind eine große Herausforderung.
+- Viele Leser vertrauen traditionellen Medien nicht mehr und suchen Alternativen.
+- Community-Engagement ist wichtig – Nutzer wollen interagieren, nicht nur konsumieren.
 ### TOUCHPOINTS
-> Das Feld Touchpoints listet die Berührungspunkte auf, die User mit einem Service oder Produkt haben.
+- Web-App (PWA) als zentrale Plattform für Artikel, Abos und Community-Interaktionen.
+- Social Media für Nachrichtenverbreitung (Twitter/X, Mastodon, LinkedIn).
+- Newsletter mit personalisierten News.
+- Podcast- & Videoformate als alternative Verbreitungskanäle.
+
 
 ### WIE KÖNNEN WIR?
-> Aus den Informationen über User, Bedürfnisse, Erkenntnisse und Touchpoints entwickeln wir eine Wie-können wir- Frage, die ein ungelöstes Problem für User beschreibt.
-
+- Wie können wir eine sichere, unabhängige News-Plattform schaffen, die Journalisten schützt und Lesern verlässliche Inhalte bietet?
+- Wie können wir eine sichere, unabhängige News-Plattform schaffen, die Journalisten schützt und Lesern verlässliche Inhalte bietet?
+- Wie können wir KI-gestützte Faktenchecks in den Journalismus integrieren?
+- Wie können wir ein Finanzierungsmodell entwickeln, das unabhängigen Journalismus nachhaltig unterstützt?
 ## Create-Board
 ### IDEEN-BESCHREIBUNG
-> Im Feld Ideenbeschreibung notieren wir den Kern unserer Idee. Sie sollte sich auf einen klaren Anwendungsfall fokussieren und diesen beschreiben.
+Unsere Plattform ermöglicht unabhängigen Journalismus durch eine **sichere, transparente und community-getriebene Nachrichtenplattform**.  
+Journalisten können investigativ berichten – auch **anonym**, um sich vor Repressionen zu schützen.  
+Leser erhalten **faktenbasierte Nachrichten**, kuratiert durch eine Kombination aus **KI-gestützter Faktenprüfung und Community-Bewertungen**.  
+Ein **Abo-Modell & alternative Finanzierungsmethoden** (z. B. Krypto-Spenden) gewährleisten Unabhängigkeit von Werbung und staatlichen Geldern.
 
 ### ADRESSIERTE NUTZER
-> Im Feld Adressierte NutzerInnen schreiben wir Details und Besonderheiten zu den NutzerInnen auf, für die wir unsere Lösungsidee entwickeln.
+### 📖 Leser
+- Interessieren sich für **alternative, unabhängige Nachrichten**.
+- Wollen sicher sein, dass Inhalte **geprüft & faktenbasiert** sind.
+- Möchten ihre **Nachrichten personalisieren**.
+
+### 📝 Journalisten
+- Suchen eine **Plattform ohne Zensur oder politische Einflussnahme**.
+- Wollen auch **anonym veröffentlichen können**, um Risiken zu vermeiden.
+- Brauchen eine **faire Monetarisierung** für ihre Arbeit.
+
+### ✅ Faktenprüfer & Community
+- Unterstützen die Plattform durch **Faktenchecks & Bewertungen**.
+- Helfen, **Desinformation zu reduzieren**.
 
 ### ADRESSIERTE BEDÜRFNISSE
-> In Feld Bedürfnisse notieren wir die Bedürfnisse der NutzerInnen, die wir mit unserer Idee erfüllen wollen.
+✔️ **Verlässliche Nachrichten** – Nutzer wollen **ungefilterte, faktenbasierte** News.  
+✔️ **Schutz für Journalisten** – Sichere Veröffentlichungen, auch anonym.  
+✔️ **Alternative Finanzierung** – Unabhängigkeit von Werbung & staatlichen Subventionen.  
+✔️ **Community-Engagement** – Leser möchten sich **aktiv beteiligen** (Kommentieren, Bewerten).  
+✔️ **Personalisierte Inhalte** – Jeder Nutzer bekommt einen **individuellen Feed**. 
 
 ### PROBLEME
-> Im Feld Probleme notieren wir die ein bis drei drängendsten Probleme, die mit diesen Bedürfnissen zu tun haben.
+1. **Fake News & Desinformation**: Viele Nachrichtenquellen sind beeinflusst oder ungeprüft.  
+2. **Gefährdung von Journalisten**: In autoritären Staaten drohen Journalisten **Repressionen**.  
+3. **Abhängigkeit von Werbeeinnahmen**: Viele Medienhäuser sind von Werbung & Politik beeinflusst.  
 
 ### IDEENPOTENZIAL
 Mehrwert: Mückenstich vs. Hai-Attacke
 
-🔵🔵🔵⚪️⚪️⚪️⚪️⚪️⚪️⚪️
+🔵🔵🔵⚪️⚪️⚪️⚪️⚪️⚪️⚪️  
+  → Die Plattform deckt ein ernstes Problem auf, das nicht jeder als dringlich wahrnimmt – bis Fake News sie direkt betreffen.  
 
 Übertragbarkeit: Robinson Crusoe vs. die Welt
 
-🔵🔵🔵🔵🔵⚪️⚪️⚪️⚪️⚪️
-
+🔵🔵🔵🔵🔵⚪️⚪️⚪️⚪️⚪️  
+  → Kann in **verschiedenen Märkten & Sprachen** angewendet werden (globales Thema).
+  
 Machbarkeit: Hammer vs. Raumschiff
 
-🔵🔵🔵🔵🔵🔵🔵🔵⚪️⚪️
+🔵🔵🔵🔵🔵🔵🔵🔵⚪️⚪️  
+  → Technisch realisierbar mit **KI, Blockchain & bestehender Web-Technologie**.  
+
 
 ### DAS WOW
-> Im Feld Das Wow notieren wir das eine Detail unserer Lösungsidee, für das wir in der Presse gefeiert werden wollen.
+📰 **"Die erste wirklich unabhängige News-Plattform mit anonymer Veröffentlichung & Faktenchecks!"**  
+🎯 **"Journalismus neu gedacht – ohne politische Einflussnahme, Werbung oder Fake News!"**  
+🚀 **"Faktenchecks – Verlässlichkeit auf Knopfdruck!"**  
 
 ### HIGH-LEVEL-KONZEPT
-> Im Feld High-Level-Konzept notieren wir eine griffige Analogie, mit der wir unsere Lösungsidee beschreiben könnten.
+- 🛡 **"Das Wikipedia für unabhängige Nachrichten."**  
+- 🤖 **"Netflix für faktenbasierte Berichterstattung – personalisiert & werbefrei."**  
+- 🔍 **"Twitter ohne Bots, Fake News & Algorithmen-Manipulation."**  
 
 ### WERTVERSPRECHEN
-> Ins Feld Wertversprechen schreiben wir unsere Lösungshypothese. Sie ist die Synthese aus Idee, NutzerIn, Bedürfnis und Ideenpotenzial. Und sie ist unsere Antwort auf die Wie-können-wir-Frage aus den EXPLORE-BOARD.
+🗞 **"Unsere Plattform bietet eine sichere, transparente und community-getriebene Umgebung für investigativen Journalismus – mit garantiert unabhängigen, faktenbasierten Nachrichten für jeden."**
 
 ## Evaluate-Board
 ### KANÄLE
