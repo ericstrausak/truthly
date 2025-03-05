@@ -13,5 +13,5 @@ Die folgende Abbildung zeigt das fachliche Datenmodell
 
 ## Use Case Diagram
 Die folgende Abbildung zeigt das Use Case Diagramm:
-![Use Case Diagram](./UC-diagram.drawio.svg)
+![Use Case Diagram](UC-diagram.drawio.svg)
 
