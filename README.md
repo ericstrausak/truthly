@@ -75,7 +75,7 @@ Ein kurzer Text als Intro
 ### BEDÜRFNISSE
 - Zugang zu faktenbasierten, unabhängigen Nachrichten.
 - Sicherheit für Journalisten, um auch brisante Themen zu veröffentlichen.
-- Transparenz bei Informationen durch Blockchain oder Faktenchecks.
+- Transparenz bei Informationen durch Faktenchecks.
 - Nutzerfreundlichkeit: Eine moderne, intuitive Plattform.
 
 ### ERKENNTNISSE
