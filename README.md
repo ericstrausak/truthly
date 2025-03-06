@@ -142,7 +142,7 @@ Mehrwert: Mückenstich vs. Hai-Attacke
 Machbarkeit: Hammer vs. Raumschiff
 
 🔵🔵🔵🔵🔵🔵🔵🔵⚪️⚪️  
-  → Technisch realisierbar mit **KI, Blockchain & bestehender Web-Technologie**.  
+  → Technisch realisierbar mit **KI & bestehender Web-Technologie**.  
 
 
 ### DAS WOW
