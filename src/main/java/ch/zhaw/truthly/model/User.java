@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
-@Document("users")
+@Document("user")
 public class User {
     @Id
     private String id;
