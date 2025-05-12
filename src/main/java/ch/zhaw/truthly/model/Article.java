@@ -31,4 +31,8 @@ public class Article {
 
     @NonNull
     private boolean isAnonymous;
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
