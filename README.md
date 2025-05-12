@@ -142,7 +142,7 @@ Mehrwert: Mückenstich vs. Hai-Attacke
 Machbarkeit: Hammer vs. Raumschiff
 
 🔵🔵🔵🔵🔵🔵🔵🔵⚪️⚪️  
-  → Technisch realisierbar mit **KI, Blockchain & bestehender Web-Technologie**.  
+  → Technisch realisierbar mit **KI & bestehender Web-Technologie**.  
 
 
 ### DAS WOW
@@ -159,17 +159,46 @@ Machbarkeit: Hammer vs. Raumschiff
 🗞 **"Unsere Plattform bietet eine sichere, transparente und community-getriebene Umgebung für investigativen Journalismus – mit garantiert unabhängigen, faktenbasierten Nachrichten für jeden."**
 
 ## Evaluate-Board
-### KANÄLE
-> Beschreibe die Vertriebs- und Marketingkanäle, über welche die NutzerInnen erreicht werden sollen. Beispiel: TikTok, E-Mail, Flyer etc.
 
-### UNFAIRER VORTEIL
-> Notiere Faktoren der Lösung, die nur schwer oder gar nicht kopierbar sind. Diese Faktoren machen es schwierig, ein Konkurrenzprodukt deiner Lösung zu lancieren. 
+### 📢 KANÄLE
+Unsere Plattform wird über verschiedene **Vertriebs- und Marketingkanäle** bekannt gemacht und verbreitet:
+- 🌐 **Website & Blog** – Eigene Plattform für Informationen, Updates und Hintergrundberichte.
+- 📱 **Social Media (Twitter/X, Mastodon, LinkedIn, Threads)** – Für direkte Kommunikation mit der Community.
+- 🎥 **YouTube & Podcasts** – Erklärvideos, Interviews mit Journalisten, Faktencheck-Formate.
+- ✉️ **E-Mail-Newsletter** – Personalisierte News-Updates & Plattform-Highlights.
+- 📣 **Reddit & Discord** – Direkter Austausch mit Interessierten und Diskussionen über News.
+- 🤝 **Kooperationen mit NGOs & unabhängigen Journalisten-Netzwerken** – Reichweite durch Partnerschaften steigern.
 
-### KPI
-> Trage hier Messgrössen ein, mit denen sich der Erfolg deiner Lösung messen lässt. Beispiele: Anzahl Verkäufe, Anzahl Kunden, Anzahl Transaktionen, Umsatz...
+---
 
-### EINNAHMEQUELLEN
-> Beschreibe, wie mit deiner Lösung Geld verdient werden soll. Wo und durch wen werden Einnahmen generiert? Hinweis: die Einnahmen müssen nicht unbedingt von den NutzerInnen stammen. Es kann auch eine Trägerschaft wie z.B. ein Verein mit Mitgliederbeiträgen, Spenden oder ähnlichem gewählt werden.
+### 🔐 UNFAIRER VORTEIL
+Unsere Plattform hat mehrere **Alleinstellungsmerkmale**, die schwer kopierbar sind:
+- **KI-gestützte Faktenchecks**: Nutzung eines KI-gestützten Systems zur Überprüfung von Nachrichtenquellen.
+- **Anonyme Veröffentlichung für Journalisten**: Sicherer Raum für investigativen Journalismus.
+- **Blockchain-Technologie für Transparenz**: Sicherung von Quellen und Berichterstattung.
+- **Community-basierte Glaubwürdigkeitsbewertung**: Nutzer können Artikel auf Basis von Faktenbewertung einstufen.
+- **Unabhängige Finanzierung**: Kein Einfluss durch Werbung oder große Medienkonzerne.
+
+---
+
+### 📊 KPI (Key Performance Indicators)
+Messgrößen zur Erfolgskontrolle:
+- 📈 **Anzahl aktiver Nutzer (monatlich)** – Wie viele Menschen lesen und interagieren?
+- ✍️ **Anzahl veröffentlichter Artikel pro Monat** – Wie aktiv sind Journalisten?
+- 🔎 **Faktencheck-Rate** – Anteil der überprüften Artikel durch KI & Community.
+- 💰 **Einnahmen durch Abos/Spenden** – Wachstum der Plattform-Finanzierung.
+- 🔄 **Interaktionsrate** – Kommentare, Bewertungen, Community-Engagement.
+- 🔒 **Anzahl sicher veröffentlichter anonymer Artikel** – Indikator für Schutz der Journalisten.
+
+---
+
+### 💰 EINNAHMEQUELLEN
+Unsere Plattform setzt auf ein nachhaltiges Finanzierungsmodell:
+- **Abo-Modell**: Nutzer können sich für ein werbefreies Premium-Modell anmelden.
+- **Spenden & Crowdfunding**: Unterstützer finanzieren durch freiwillige Beiträge.
+- **Krypto-Zahlungen**: Micropayments für Inhalte über Blockchain-basierte Wallets.
+- **Förderungen & NGO-Unterstützung**: Zusammenarbeit mit Stiftungen und Organisationen.
+- **Freemium-Modell**: Grundlegender Zugang kostenlos, Zusatzfunktionen über Mitgliedschaft.
 
 ## Diskussion Feedback Pitch
 > Diskussion des Feedbacks aus dem Pitch (bezogen auf Projektinhalt)
