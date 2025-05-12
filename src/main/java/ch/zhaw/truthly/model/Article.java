@@ -15,20 +15,20 @@ import lombok.NoArgsConstructor;
 public class Article {
     @Id
     private String id;
-    
+
     @NonNull
     private String title;
-    
+
     @NonNull
     private String content;
-    
+
     @NonNull
     private String authorId;
-    
+
     private Date publicationDate = new Date();
-    
+
     private String status = "DRAFT"; // DRAFT, PUBLISHED, VERIFIED, REJECTED
-    
+
     @NonNull
     private boolean isAnonymous;
 }
