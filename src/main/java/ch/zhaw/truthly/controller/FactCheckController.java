@@ -3,16 +3,14 @@ package ch.zhaw.truthly.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ch.zhaw.truthly.model.FactCheck;
 import ch.zhaw.truthly.model.FactCheckCreateDTO;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.repository.FactCheckRepository;
 import ch.zhaw.truthly.repository.ArticleRepository;
 import ch.zhaw.truthly.repository.UserRepository;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,22 +29,13 @@ public class FactCheckController {
     @PostMapping("/factcheck")
     public ResponseEntity<FactCheck> createFactCheck(@RequestBody FactCheckCreateDTO factCheckDTO) {
         try {
-            // Prüfen, ob der Artikel existiert
+            // Check if the article exists
             Optional<Article> articleOpt = articleRepository.findById(factCheckDTO.getArticleId());
             if (!articleOpt.isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             
-            // Prüfen, ob der Prüfer (Checker) existiert
-            // Dieser Teil kann optional sein, je nachdem, ob Sie die User-Endpoints bereits implementiert haben
-            /*
-            Optional<User> checkerOpt = userRepository.findById(factCheckDTO.getCheckerId());
-            if (!checkerOpt.isPresent()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-            */
-            
-            // FactCheck erstellen
+            // Create FactCheck
             FactCheck factCheck = new FactCheck(
                 factCheckDTO.getArticleId(),
                 factCheckDTO.getCheckerId(),
@@ -54,12 +43,9 @@ public class FactCheckController {
                 factCheckDTO.getDescription()
             );
             
-            // Hier könnten Sie einen KI-Service aufrufen, um eine zusätzliche Verifizierung zu erhalten
-            // factCheck.setAiVerificationResult(aiService.verify(articleOpt.get().getContent()));
-            
             FactCheck savedFactCheck = factCheckRepository.save(factCheck);
             
-            // Optional: Den Status des Artikels aktualisieren
+            // Update the article status
             Article article = articleOpt.get();
             if (factCheckDTO.getResult().equals("TRUE")) {
                 article.setStatus("VERIFIED");
@@ -69,6 +55,31 @@ public class FactCheckController {
             articleRepository.save(article);
             
             return new ResponseEntity<>(savedFactCheck, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @GetMapping("/factcheck")
+    public ResponseEntity<List<FactCheck>> getAllFactChecks() {
+        try {
+            List<FactCheck> factChecks = factCheckRepository.findAll();
+            return new ResponseEntity<>(factChecks, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @GetMapping("/factcheck/{id}")
+    public ResponseEntity<FactCheck> getFactCheckById(@PathVariable String id) {
+        try {
+            Optional<FactCheck> factCheckData = factCheckRepository.findById(id);
+            
+            if (factCheckData.isPresent()) {
+                return new ResponseEntity<>(factCheckData.get(), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
