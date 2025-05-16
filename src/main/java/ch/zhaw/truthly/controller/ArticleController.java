@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleCreateDTO;
 import ch.zhaw.truthly.model.StatusUpdateDTO;
@@ -12,6 +13,7 @@ import ch.zhaw.truthly.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.Arrays;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/api")
@@ -94,19 +96,66 @@ public class ArticleController {
     }
 
     @GetMapping("/article/author/{authorId}")
-public ResponseEntity<List<Article>> getArticlesByAuthorId(@PathVariable String authorId) {
-    try {
-        // Validate that the author exists (optional)
-        if (!userRepository.existsById(authorId)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<List<Article>> getArticlesByAuthorId(@PathVariable String authorId) {
+        try {
+            // Validate that the author exists (optional)
+            if (!userRepository.existsById(authorId)) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            List<Article> articles = articleRepository.findByAuthorId(authorId);
+            return new ResponseEntity<>(articles, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
-        List<Article> articles = articleRepository.findByAuthorId(authorId);
-        return new ResponseEntity<>(articles, HttpStatus.OK);
-    } catch (Exception e) {
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-}
+
+    @GetMapping("/article/search")
+    public ResponseEntity<List<Article>> searchArticles(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String content,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
+        try {
+            List<Article> articles;
+
+            // If keyword is provided, use the general search
+            if (keyword != null && !keyword.isEmpty()) {
+                articles = articleRepository.search(keyword);
+            }
+            // If title is provided, search by title
+            else if (title != null && !title.isEmpty()) {
+                articles = articleRepository.findByTitleContaining(title);
+            }
+            // If content is provided, search by content
+            else if (content != null && !content.isEmpty()) {
+                articles = articleRepository.findByContentContaining(content);
+            }
+            // If status is provided, search by status
+            else if (status != null && !status.isEmpty()) {
+                // Validate status (optional)
+                List<String> validStatuses = Arrays.asList("DRAFT", "PUBLISHED", "VERIFIED", "REJECTED");
+                if (!validStatuses.contains(status)) {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
+                articles = articleRepository.findByStatus(status);
+            }
+            // If date range is provided, search by date range
+            else if (startDate != null && endDate != null) {
+                articles = articleRepository.findByPublicationDateBetween(startDate, endDate);
+            }
+            // Otherwise, get all articles
+            else {
+                articles = articleRepository.findAll();
+            }
+
+            return new ResponseEntity<>(articles, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     // Hilfsmethode zur Überprüfung, ob ein Statusübergang gültig ist
     private boolean isValidStatusTransition(String currentStatus, String newStatus) {
