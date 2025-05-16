@@ -1,3 +1,4 @@
+// Article.java (update)
 package ch.zhaw.truthly.model;
 
 import java.util.Date;
@@ -31,6 +32,9 @@ public class Article {
 
     @NonNull
     private boolean isAnonymous;
+    
+    @NonNull
+    private ArticleType articleType; // New field
 
     public void setStatus(String status) {
         this.status = status;

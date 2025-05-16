@@ -1,3 +1,4 @@
+// ArticleCreateDTO.java (update)
 package ch.zhaw.truthly.model;
 
 import lombok.Getter;
@@ -10,4 +11,5 @@ public class ArticleCreateDTO {
     private String content;
     private String authorId;
     private boolean isAnonymous;
+    private ArticleType articleType; // New field
 }

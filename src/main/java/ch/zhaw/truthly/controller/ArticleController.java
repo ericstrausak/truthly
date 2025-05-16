@@ -26,19 +26,21 @@ public class ArticleController {
     UserRepository userRepository;
 
     @PostMapping("/article")
-    public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
-        try {
-            Article article = new Article(
-                    articleDTO.getTitle(),
-                    articleDTO.getContent(),
-                    articleDTO.getAuthorId(),
-                    articleDTO.isAnonymous());
-            Article savedArticle = articleRepository.save(article);
-            return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
+    try {
+        Article article = new Article(
+            articleDTO.getTitle(),
+            articleDTO.getContent(),
+            articleDTO.getAuthorId(),
+            articleDTO.isAnonymous(),
+            articleDTO.getArticleType() // New field
+        );
+        Article savedArticle = articleRepository.save(article);
+        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
+    } catch (Exception e) {
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @GetMapping("/article")
     public ResponseEntity<List<Article>> getAllArticles() {
@@ -156,6 +158,8 @@ public class ArticleController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    
 
     // Hilfsmethode zur Überprüfung, ob ein Statusübergang gültig ist
     private boolean isValidStatusTransition(String currentStatus, String newStatus) {
