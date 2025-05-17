@@ -9,10 +9,13 @@ import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleCreateDTO;
 import ch.zhaw.truthly.model.ArticleStatus;
 import ch.zhaw.truthly.model.StatusUpdateDTO;
+import ch.zhaw.truthly.model.User;
 import ch.zhaw.truthly.repository.ArticleRepository;
 import ch.zhaw.truthly.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -185,18 +188,39 @@ public class ArticleController {
         }
     }
 
-    // Hilfsmethode zur Überprüfung, ob ein Statusübergang gültig ist
+    @GetMapping("/article/search/author")
+    public ResponseEntity<?> searchArticlesByAuthorName(@RequestParam String name) {
+        try {
+            if (name == null || name.trim().isEmpty()) {
+                return new ResponseEntity<>("Author name cannot be empty", HttpStatus.BAD_REQUEST);
+            }
+
+            List<User> matchingUsers = userRepository.findByUsernameContainingIgnoreCase(name);
+
+            if (matchingUsers.isEmpty()) {
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.OK);
+            }
+
+            List<String> authorIds = matchingUsers.stream()
+                    .map(User::getId)
+                    .collect(Collectors.toList());
+
+            List<Article> articles = articleRepository.findByAuthorIdIn(authorIds);
+
+            return new ResponseEntity<>(articles, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     private boolean isValidStatusTransition(String currentStatus, String newStatus) {
         // Gültige Statuswerte
         List<String> validStatuses = Arrays.asList("DRAFT", "PUBLISHED", "VERIFIED", "REJECTED");
 
-        // Prüfen, ob der neue Status gültig ist
         if (!validStatuses.contains(newStatus)) {
             return false;
         }
 
-        // Spezifische Regeln für Statusübergänge
-        // z.B. kann ein abgelehnter Artikel nicht veröffentlicht werden
         if (currentStatus.equals("REJECTED") && newStatus.equals("PUBLISHED")) {
             return false;
         }
