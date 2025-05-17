@@ -1,10 +1,12 @@
 package ch.zhaw.truthly.service;
 
 import java.util.Optional;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ch.zhaw.truthly.model.Article;
-import ch.zhaw.truthly.model.ArticleStatus; // Import the enum
+import ch.zhaw.truthly.model.ArticleStatus;
+import ch.zhaw.truthly.model.ArticleStatusAggregationDTO;
 import ch.zhaw.truthly.repository.ArticleRepository;
 import ch.zhaw.truthly.repository.UserRepository;
 
@@ -80,4 +82,17 @@ public class ArticleService {
         Article updatedArticle = articleRepository.save(article);
         return Optional.of(updatedArticle);
     }
+
+    public List<ArticleStatusAggregationDTO> getArticleStatusAggregation(String authorId) {
+        if (!userRepository.existsById(authorId)) {
+            return List.of(); // Return empty list if author doesn't exist
+        }
+
+        return articleRepository.getArticleStatusAggregation(authorId);
+    }
+
+    public boolean userExists(String userId) {
+        return userRepository.existsById(userId);
+    }
+
 }

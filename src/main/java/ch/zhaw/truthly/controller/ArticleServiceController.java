@@ -6,9 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleStateChangeDTO;
+import ch.zhaw.truthly.model.ArticleStatusAggregationDTO;
 import ch.zhaw.truthly.model.FactCheckCompleteDTO;
 import ch.zhaw.truthly.service.ArticleService;
 import ch.zhaw.truthly.repository.ArticleRepository;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,37 +20,49 @@ public class ArticleServiceController {
 
     @Autowired
     ArticleService articleService;
-    
+
     @Autowired
     ArticleRepository articleRepository;
-    
+
     @PutMapping("/assignarticle")
     public ResponseEntity<Article> assignArticleForChecking(@RequestBody ArticleStateChangeDTO changeDTO) {
         String checkerId = changeDTO.getCheckerId();
         String articleId = changeDTO.getArticleId();
-        
+
         Optional<Article> article = articleService.assignArticleForChecking(articleId, checkerId);
-        
+
         if (article.isPresent()) {
             return new ResponseEntity<>(article.get(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
     @PutMapping("/completechecking")
-public ResponseEntity<Article> completeFactChecking(@RequestBody FactCheckCompleteDTO completeDTO) {
-    String checkerId = completeDTO.getCheckerId();
-    String articleId = completeDTO.getArticleId();
-    String result = completeDTO.getResult();
-    
-    Optional<Article> article = articleService.completeFactChecking(articleId, checkerId, result);
-    
-    if (article.isPresent()) {
-        return new ResponseEntity<>(article.get(), HttpStatus.OK);
-    } else {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Article> completeFactChecking(@RequestBody FactCheckCompleteDTO completeDTO) {
+        String checkerId = completeDTO.getCheckerId();
+        String articleId = completeDTO.getArticleId();
+        String result = completeDTO.getResult();
+
+        Optional<Article> article = articleService.completeFactChecking(articleId, checkerId, result);
+
+        if (article.isPresent()) {
+            return new ResponseEntity<>(article.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
-}
-    
+
+    @GetMapping("/articledashboard")
+    public ResponseEntity<List<ArticleStatusAggregationDTO>> getArticleStatusAggregation(
+            @RequestParam String author) {
+
+        if (!articleService.userExists(author)) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        List<ArticleStatusAggregationDTO> stats = articleService.getArticleStatusAggregation(author);
+        return new ResponseEntity<>(stats, HttpStatus.OK);
+    }
     // We'll add more endpoints in the subsequent issues
 }

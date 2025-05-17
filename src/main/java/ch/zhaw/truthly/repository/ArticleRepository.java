@@ -1,8 +1,10 @@
 package ch.zhaw.truthly.repository;
 
+import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import ch.zhaw.truthly.model.Article;
+import ch.zhaw.truthly.model.ArticleStatusAggregationDTO;
 import ch.zhaw.truthly.model.ArticleType;
 
 import java.util.List;
@@ -29,4 +31,10 @@ public interface ArticleRepository extends MongoRepository<Article, String> {
 
     @Query("{ $or: [ { 'title' : { $regex: ?0, $options: 'i' } }, { 'content' : { $regex: ?0, $options: 'i' } } ] }")
     List<Article> search(String keyword);
+
+    @Aggregation({
+            "{'$match': {'authorId': ?0}}",
+            "{'$group': {'_id': '$status', 'articleIds': {'$push': '$_id'}, 'count': {'$sum': 1}}}"
+    })
+    List<ArticleStatusAggregationDTO> getArticleStatusAggregation(String authorId);
 }
