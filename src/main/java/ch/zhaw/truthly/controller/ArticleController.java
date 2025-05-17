@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleCreateDTO;
 import ch.zhaw.truthly.model.ArticleStatus;
+import ch.zhaw.truthly.model.ArticleType;
 import ch.zhaw.truthly.model.StatusUpdateDTO;
 import ch.zhaw.truthly.model.User;
 import ch.zhaw.truthly.repository.ArticleRepository;
@@ -47,14 +48,27 @@ public class ArticleController {
     }
 
     @GetMapping("/article")
-    public ResponseEntity<List<Article>> getAllArticles() {
-        try {
-            List<Article> articles = articleRepository.findAll();
-            return new ResponseEntity<>(articles, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false) String type) {
+    try {
+        List<Article> articles;
+        
+        if (type != null && !type.isEmpty()) {
+            // Try to convert the string to an enum value
+            try {
+                ArticleType articleType = ArticleType.valueOf(type.toUpperCase());
+                articles = articleRepository.findByArticleType(articleType);
+            } catch (IllegalArgumentException e) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        } else {
+            articles = articleRepository.findAll();
         }
+        
+        return new ResponseEntity<>(articles, HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @GetMapping("/article/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable String id) {
