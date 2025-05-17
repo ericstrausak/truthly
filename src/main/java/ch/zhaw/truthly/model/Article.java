@@ -6,11 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Getter
+@Setter
 @Document("article")
 public class Article {
     @Id

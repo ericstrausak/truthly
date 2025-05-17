@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import ch.zhaw.truthly.service.UserService;
 
 @RestController
 @RequestMapping("/api")
@@ -30,45 +31,56 @@ public class ArticleController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/article")
-    public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
-        try {
-            Article article = new Article(
-                    articleDTO.getTitle(),
-                    articleDTO.getContent(),
-                    articleDTO.getAuthorId(),
-                    articleDTO.isAnonymous(),
-                    articleDTO.getArticleType() // New field
-            );
-            Article savedArticle = articleRepository.save(article);
-            return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    @Autowired
+    UserService userService;
 
-    @GetMapping("/article")
-public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false) String type) {
+   @PostMapping("/article")
+public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
     try {
-        List<Article> articles;
-        
-        if (type != null && !type.isEmpty()) {
-            // Try to convert the string to an enum value
-            try {
-                ArticleType articleType = ArticleType.valueOf(type.toUpperCase());
-                articles = articleRepository.findByArticleType(articleType);
-            } catch (IllegalArgumentException e) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
-        } else {
-            articles = articleRepository.findAll();
+        // Check if the author exists
+        if (!userService.userExists(articleDTO.getAuthorId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+        // Create an Article object according to your existing constructor
+        // Adjust this based on your actual constructor parameters
+        Article article = new Article();
         
-        return new ResponseEntity<>(articles, HttpStatus.OK);
+        // Manually set each field
+        article.setTitle(articleDTO.getTitle());
+        article.setContent(articleDTO.getContent());
+        article.setAuthorId(articleDTO.getAuthorId());
+        article.setAnonymous(articleDTO.isAnonymous());
+        
+        Article savedArticle = articleRepository.save(article);
+        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
     } catch (Exception e) {
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
+
+    @GetMapping("/article")
+    public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false) String type) {
+        try {
+            List<Article> articles;
+
+            if (type != null && !type.isEmpty()) {
+                // Try to convert the string to an enum value
+                try {
+                    ArticleType articleType = ArticleType.valueOf(type.toUpperCase());
+                    articles = articleRepository.findByArticleType(articleType);
+                } catch (IllegalArgumentException e) {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
+            } else {
+                articles = articleRepository.findAll();
+            }
+
+            return new ResponseEntity<>(articles, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/article/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable String id) {
