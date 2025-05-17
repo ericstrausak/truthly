@@ -6,5 +6,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class StatusUpdateDTO {
-    private String status;
+    private ArticleStatus status;
 }

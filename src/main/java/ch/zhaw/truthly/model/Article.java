@@ -1,4 +1,3 @@
-// Article.java (update)
 package ch.zhaw.truthly.model;
 
 import java.util.Date;
@@ -28,15 +27,15 @@ public class Article {
 
     private Date publicationDate = new Date();
 
-    private String status = "DRAFT"; // DRAFT, PUBLISHED, VERIFIED, REJECTED
+    private ArticleStatus status = ArticleStatus.DRAFT; // Now using enum
 
     @NonNull
     private boolean isAnonymous;
-    
-    @NonNull
-    private ArticleType articleType; // New field
 
-    public void setStatus(String status) {
+    @NonNull
+    private ArticleType articleType;
+
+    public void setStatus(ArticleStatus status) {
         this.status = status;
     }
 }

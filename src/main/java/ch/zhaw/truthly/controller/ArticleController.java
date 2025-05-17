@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleCreateDTO;
+import ch.zhaw.truthly.model.ArticleStatus;
 import ch.zhaw.truthly.model.StatusUpdateDTO;
 import ch.zhaw.truthly.repository.ArticleRepository;
 import ch.zhaw.truthly.repository.UserRepository;
@@ -26,21 +27,21 @@ public class ArticleController {
     UserRepository userRepository;
 
     @PostMapping("/article")
-public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
-    try {
-        Article article = new Article(
-            articleDTO.getTitle(),
-            articleDTO.getContent(),
-            articleDTO.getAuthorId(),
-            articleDTO.isAnonymous(),
-            articleDTO.getArticleType() // New field
-        );
-        Article savedArticle = articleRepository.save(article);
-        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
-    } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
+        try {
+            Article article = new Article(
+                    articleDTO.getTitle(),
+                    articleDTO.getContent(),
+                    articleDTO.getAuthorId(),
+                    articleDTO.isAnonymous(),
+                    articleDTO.getArticleType() // New field
+            );
+            Article savedArticle = articleRepository.save(article);
+            return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-}
 
     @GetMapping("/article")
     public ResponseEntity<List<Article>> getAllArticles() {
@@ -78,13 +79,16 @@ public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO artic
             if (articleData.isPresent()) {
                 Article article = articleData.get();
 
-                // Validieren des Status
-                String newStatus = statusDTO.getStatus();
-                if (!isValidStatusTransition(article.getStatus(), newStatus)) {
+                // Get current and new status
+                ArticleStatus currentStatus = article.getStatus();
+                ArticleStatus newStatus = statusDTO.getStatus();
+
+                // Validate the status transition
+                if (!isValidStatusTransition(currentStatus, newStatus)) {
                     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
                 }
 
-                // Status aktualisieren
+                // Update status
                 article.setStatus(newStatus);
                 Article updatedArticle = articleRepository.save(article);
 
@@ -94,6 +98,28 @@ public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO artic
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // Helper method to verify if a status transition is valid
+    private boolean isValidStatusTransition(ArticleStatus currentStatus, ArticleStatus newStatus) {
+        // Same status is always valid
+        if (currentStatus == newStatus) {
+            return true;
+        }
+
+        // Define valid transitions
+        switch (currentStatus) {
+            case DRAFT:
+                return newStatus == ArticleStatus.PUBLISHED || newStatus == ArticleStatus.REJECTED;
+            case PUBLISHED:
+                return newStatus == ArticleStatus.VERIFIED || newStatus == ArticleStatus.REJECTED;
+            case VERIFIED:
+                return newStatus == ArticleStatus.REJECTED;
+            case REJECTED:
+                return newStatus == ArticleStatus.DRAFT;
+            default:
+                return false;
         }
     }
 
@@ -158,8 +184,6 @@ public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO artic
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    
 
     // Hilfsmethode zur Überprüfung, ob ein Statusübergang gültig ist
     private boolean isValidStatusTransition(String currentStatus, String newStatus) {

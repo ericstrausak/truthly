@@ -11,16 +11,16 @@ public interface ArticleRepository extends MongoRepository<Article, String> {
 
     @Query("{ 'title' : { $regex: ?0, $options: 'i' } }")
     List<Article> findByTitleContaining(String title);
-    
+
     @Query("{ 'content' : { $regex: ?0, $options: 'i' } }")
     List<Article> findByContentContaining(String content);
-    
+
     @Query("{ 'status' : ?0 }")
     List<Article> findByStatus(String status);
-    
+
     @Query("{ 'publicationDate' : { $gte: ?0, $lte: ?1 } }")
     List<Article> findByPublicationDateBetween(Date start, Date end);
-    
+
     @Query("{ $or: [ { 'title' : { $regex: ?0, $options: 'i' } }, { 'content' : { $regex: ?0, $options: 'i' } } ] }")
     List<Article> search(String keyword);
 }
