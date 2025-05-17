@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ch.zhaw.truthly.model.FactCheck;
 import ch.zhaw.truthly.model.FactCheckCreateDTO;
+import ch.zhaw.truthly.model.FactCheckRating;
 import ch.zhaw.truthly.model.Article;
 import ch.zhaw.truthly.model.ArticleStatus;
 import ch.zhaw.truthly.repository.FactCheckRepository;
@@ -28,37 +29,38 @@ public class FactCheckController {
     UserRepository userRepository;
 
     @PostMapping("/factcheck")
-    public ResponseEntity<FactCheck> createFactCheck(@RequestBody FactCheckCreateDTO factCheckDTO) {
-        try {
-            // Check if the article exists
-            Optional<Article> articleOpt = articleRepository.findById(factCheckDTO.getArticleId());
-            if (!articleOpt.isPresent()) {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
-
-            // Create FactCheck
-            FactCheck factCheck = new FactCheck(
-                    factCheckDTO.getArticleId(),
-                    factCheckDTO.getCheckerId(),
-                    factCheckDTO.getResult(),
-                    factCheckDTO.getDescription());
-
-            FactCheck savedFactCheck = factCheckRepository.save(factCheck);
-
-            // Update the article status
-            Article article = articleOpt.get();
-            if (factCheckDTO.getResult().equals("TRUE")) {
-                article.setStatus(ArticleStatus.VERIFIED);
-            } else if (factCheckDTO.getResult().equals("FALSE")) {
-                article.setStatus(ArticleStatus.REJECTED);
-            }
-            articleRepository.save(article);
-
-            return new ResponseEntity<>(savedFactCheck, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+public ResponseEntity<FactCheck> createFactCheck(@RequestBody FactCheckCreateDTO factCheckDTO) {
+    try {
+        // Check if the article exists
+        Optional<Article> articleOpt = articleRepository.findById(factCheckDTO.getArticleId());
+        if (!articleOpt.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        
+        // Create FactCheck with enum result
+        FactCheck factCheck = new FactCheck(
+            factCheckDTO.getArticleId(),
+            factCheckDTO.getCheckerId(),
+            factCheckDTO.getResult(),
+            factCheckDTO.getDescription()
+        );
+        
+        FactCheck savedFactCheck = factCheckRepository.save(factCheck);
+        
+        // Update the article status based on fact check result
+        Article article = articleOpt.get();
+        if (factCheckDTO.getResult() == FactCheckRating.TRUE) {
+            article.setStatus(ArticleStatus.VERIFIED);
+        } else if (factCheckDTO.getResult() == FactCheckRating.FALSE) {
+            article.setStatus(ArticleStatus.REJECTED);
+        }
+        articleRepository.save(article);
+        
+        return new ResponseEntity<>(savedFactCheck, HttpStatus.CREATED);
+    } catch (Exception e) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @GetMapping("/factcheck")
     public ResponseEntity<List<FactCheck>> getAllFactChecks() {

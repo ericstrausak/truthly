@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 public class FactCheckCreateDTO {
     private String articleId;
     private String checkerId;
-    private String result; // z.B. "TRUE", "FALSE", "PARTLY_TRUE"
+    private FactCheckRating result;
     private String description;
 }

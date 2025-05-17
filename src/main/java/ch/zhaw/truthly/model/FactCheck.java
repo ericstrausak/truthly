@@ -23,12 +23,12 @@ public class FactCheck {
     private String checkerId;
     
     @NonNull
-    private String result;
+    private FactCheckRating result;
     
     @NonNull
     private String description;
     
     private Date checkDate = new Date();
     
-    private String aiVerificationResult;  // Optional, kann später mit der KI ergänzt werden
+    private String aiVerificationResult;
 }
