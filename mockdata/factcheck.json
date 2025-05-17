@@ -1,0 +1,1054 @@
+[
+    {
+        "_id": "1",
+        "articleId": "7",
+        "checkerId": "1",
+        "result": "TRUE",
+        "description": "Fact check for article 'The Mystery of the Missing Diamond'. All facts were verified with primary sources and found to be accurate.",
+        "checkDate": {
+            "$date": "2023-09-18T14:25:36Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "2",
+        "articleId": "11",
+        "checkerId": "3",
+        "result": "TRUE",
+        "description": "Thoroughly verified all claims in 'The Secret of the Opal Orb' with multiple credible sources.",
+        "checkDate": {
+            "$date": "2023-08-05T09:12:45Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "3",
+        "articleId": "14",
+        "checkerId": "6",
+        "result": "TRUE",
+        "description": "All information in 'The Secret of the Emerald Eye' has been cross-referenced with expert sources and confirmed.",
+        "checkDate": {
+            "$date": "2024-09-10T17:38:22Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "4",
+        "articleId": "23",
+        "checkerId": "8",
+        "result": "TRUE",
+        "description": "The claims in 'The Secret of the Jasper Jewel' have been verified with academic sources.",
+        "checkDate": {
+            "$date": "2023-07-05T11:20:38Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "5",
+        "articleId": "31",
+        "checkerId": "1",
+        "result": "TRUE",
+        "description": "All historical claims in 'The Secret of the Sphinx' are accurate according to archaeological records.",
+        "checkDate": {
+            "$date": "2023-10-12T16:45:11Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "6",
+        "articleId": "40",
+        "checkerId": "3",
+        "result": "TRUE",
+        "description": "The information presented in 'The Secret of the Amethyst Amulet' has been verified with expert gemologists.",
+        "checkDate": {
+            "$date": "2023-03-10T13:27:59Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "7",
+        "articleId": "47",
+        "checkerId": "20",
+        "result": "TRUE",
+        "description": "All geographical and historical details in 'The Mysterious Island' have been confirmed with reliable sources.",
+        "checkDate": {
+            "$date": "2025-04-25T08:14:33Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "8",
+        "articleId": "48",
+        "checkerId": "7",
+        "result": "TRUE",
+        "description": "The geological information in 'The Secret of the Amethyst Amulet' has been verified with scientific publications.",
+        "checkDate": {
+            "$date": "2023-11-12T10:29:45Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "9",
+        "articleId": "53",
+        "checkerId": "4",
+        "result": "TRUE",
+        "description": "All archaeological references in 'The Secret of the Sphinx' have been verified with academic sources.",
+        "checkDate": {
+            "$date": "2023-04-15T14:53:27Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "10",
+        "articleId": "54",
+        "checkerId": "8",
+        "result": "TRUE",
+        "description": "The historical information in 'The Pirate's Treasure' has been verified with maritime historians.",
+        "checkDate": {
+            "$date": "2025-01-10T09:47:51Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "11",
+        "articleId": "55",
+        "checkerId": "6",
+        "result": "TRUE",
+        "description": "All gemological information in 'The Secret of the Amethyst Amulet' has been verified with expert sources.",
+        "checkDate": {
+            "$date": "2024-08-05T16:30:22Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "12",
+        "articleId": "59",
+        "checkerId": "3",
+        "result": "TRUE",
+        "description": "The archaeological information in 'The Secret of the Sphinx' has been verified with Egyptology experts.",
+        "checkDate": {
+            "$date": "2024-04-02T11:15:48Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "13",
+        "articleId": "62",
+        "checkerId": "1",
+        "result": "TRUE",
+        "description": "The gemological and historical information in 'The Secret of the Moonstone Medallion' has been verified.",
+        "checkDate": {
+            "$date": "2024-05-03T14:27:39Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "14",
+        "articleId": "63",
+        "checkerId": "4",
+        "result": "TRUE",
+        "description": "All historical details about the diamond necklace have been verified with museum archives.",
+        "checkDate": {
+            "$date": "2024-05-20T09:11:25Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "15",
+        "articleId": "65",
+        "checkerId": "8",
+        "result": "TRUE",
+        "description": "The geological and historical information about the moonstone medallion has been verified with experts.",
+        "checkDate": {
+            "$date": "2024-11-01T12:43:17Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "16",
+        "articleId": "68",
+        "checkerId": "6",
+        "result": "TRUE",
+        "description": "The historical details in 'The Pirate's Treasure' have been confirmed with maritime history experts.",
+        "checkDate": {
+            "$date": "2024-01-05T15:38:42Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "17",
+        "articleId": "70",
+        "checkerId": "20",
+        "result": "TRUE",
+        "description": "All gemological information in 'The Secret of the Jasper Jewel' has been verified with reliable sources.",
+        "checkDate": {
+            "$date": "2024-11-10T09:22:36Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "18",
+        "articleId": "72",
+        "checkerId": "3",
+        "result": "TRUE",
+        "description": "The archaeological information in 'The Secret of the Sphinx' has been verified with academic sources.",
+        "checkDate": {
+            "$date": "2024-02-01T13:47:29Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "19",
+        "articleId": "78",
+        "checkerId": "8",
+        "result": "TRUE",
+        "description": "All details about the missing diamond case have been verified with police reports and gemologists.",
+        "checkDate": {
+            "$date": "2023-03-05T10:28:15Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "20",
+        "articleId": "79",
+        "checkerId": "4",
+        "result": "TRUE",
+        "description": "The gemological information in 'The Secret of the Amethyst Amulet' has been verified with expert sources.",
+        "checkDate": {
+            "$date": "2024-04-25T12:19:37Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "21",
+        "articleId": "85",
+        "checkerId": "1",
+        "result": "TRUE",
+        "description": "All archaeological information in 'The Secret of the Crystal Skull' has been verified with academic sources.",
+        "checkDate": {
+            "$date": "2024-01-05T16:32:18Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "22",
+        "articleId": "87",
+        "checkerId": "6",
+        "result": "TRUE",
+        "description": "The cryptography details in 'The Secret Code' have been verified with cybersecurity experts.",
+        "checkDate": {
+            "$date": "2023-02-15T11:43:57Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "23",
+        "articleId": "92",
+        "checkerId": "3",
+        "result": "TRUE",
+        "description": "The historical details in 'The Secret of the Old Clock' have been verified with horological experts.",
+        "checkDate": {
+            "$date": "2024-12-20T14:25:32Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "24",
+        "articleId": "96",
+        "checkerId": "8",
+        "result": "TRUE",
+        "description": "All astronomical data in 'Lost in Space' has been verified with NASA publications.",
+        "checkDate": {
+            "$date": "2023-10-01T09:17:43Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "25",
+        "articleId": "98",
+        "checkerId": "20",
+        "result": "TRUE",
+        "description": "The gemological information in 'The Secret of the Citrine Charm' has been verified with expert sources.",
+        "checkDate": {
+            "$date": "2023-02-10T12:34:18Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "26",
+        "articleId": "1",
+        "checkerId": "4",
+        "result": "FALSE",
+        "description": "Multiple factual errors were found in 'The Curse of the Black Pearl'. Historical dates and locations are incorrect.",
+        "checkDate": {
+            "$date": "2025-05-12T10:15:27Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "27",
+        "articleId": "5",
+        "checkerId": "22",
+        "result": "FALSE",
+        "description": "The historical information in 'The Pirate's Treasure' contains numerous inaccuracies and unsubstantiated claims.",
+        "checkDate": {
+            "$date": "2025-02-05T15:42:31Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "28",
+        "articleId": "6",
+        "checkerId": "7",
+        "result": "FALSE",
+        "description": "The geographical and geological information in 'The Mysterious Island' is significantly flawed.",
+        "checkDate": {
+            "$date": "2024-09-25T13:18:46Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "29",
+        "articleId": "12",
+        "checkerId": "20",
+        "result": "FALSE",
+        "description": "The article 'The Secret Society' contains multiple unverifiable claims and historical inaccuracies.",
+        "checkDate": {
+            "$date": "2024-06-10T09:27:33Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "30",
+        "articleId": "13",
+        "checkerId": "1",
+        "result": "FALSE",
+        "description": "The architectural details in 'The Haunted Mansion' are incorrect and the historical claims cannot be verified.",
+        "checkDate": {
+            "$date": "2025-02-01T11:42:17Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "31",
+        "articleId": "16",
+        "checkerId": "6",
+        "result": "FALSE",
+        "description": "The historical claims in 'The Legend of the Golden Key' are contradicted by primary sources.",
+        "checkDate": {
+            "$date": "2023-02-10T14:38:29Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "32",
+        "articleId": "19",
+        "checkerId": "3",
+        "result": "FALSE",
+        "description": "The gemological information in 'The Secret of the Jasper Jewel' contains significant inaccuracies.",
+        "checkDate": {
+            "$date": "2023-07-20T10:25:41Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "33",
+        "articleId": "21",
+        "checkerId": "7",
+        "result": "FALSE",
+        "description": "The historical and archaeological claims in 'The Forbidden Scroll' are not supported by evidence.",
+        "checkDate": {
+            "$date": "2023-03-10T16:19:33Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "34",
+        "articleId": "22",
+        "checkerId": "4",
+        "result": "FALSE",
+        "description": "The article 'The Secret of the Aquamarine Ankh' contains multiple factual errors regarding Egyptian history.",
+        "checkDate": {
+            "$date": "2024-12-20T09:43:15Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "35",
+        "articleId": "35",
+        "checkerId": "22",
+        "result": "FALSE",
+        "description": "The archaeological claims in 'The Hidden Chamber' are contradicted by recent excavation findings.",
+        "checkDate": {
+            "$date": "2023-07-05T12:38:27Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "36",
+        "articleId": "39",
+        "checkerId": "1",
+        "result": "FALSE",
+        "description": "The botanical information in 'Secrets of the Enchanted Forest' contains multiple scientific inaccuracies.",
+        "checkDate": {
+            "$date": "2025-05-01T14:22:19Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "37",
+        "articleId": "43",
+        "checkerId": "20",
+        "result": "FALSE",
+        "description": "The botanical and historical information in 'The Secret of the Golden Flower' is largely incorrect.",
+        "checkDate": {
+            "$date": "2024-08-10T11:15:38Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "38",
+        "articleId": "44",
+        "checkerId": "4",
+        "result": "FALSE",
+        "description": "The archaeological claims in 'The Hidden Chamber' are not supported by any credible evidence.",
+        "checkDate": {
+            "$date": "2023-03-01T13:47:26Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "39",
+        "articleId": "64",
+        "checkerId": "8",
+        "result": "FALSE",
+        "description": "The historical details in 'The Phantom of the Opera' contain significant inaccuracies about the Paris Opera House.",
+        "checkDate": {
+            "$date": "2024-04-05T10:28:17Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "40",
+        "articleId": "66",
+        "checkerId": "3",
+        "result": "FALSE",
+        "description": "The archaeological information in 'The Secret of the Sphinx' contradicts established Egyptological records.",
+        "checkDate": {
+            "$date": "2023-07-25T15:42:39Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "41",
+        "articleId": "67",
+        "checkerId": "7",
+        "result": "FALSE",
+        "description": "The architectural details in 'The Haunted Mansion' are historically inaccurate by several decades.",
+        "checkDate": {
+            "$date": "2024-07-10T11:15:23Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "42",
+        "articleId": "69",
+        "checkerId": "6",
+        "result": "FALSE",
+        "description": "The historical claims in 'The Secret Society' cannot be verified with any primary sources.",
+        "checkDate": {
+            "$date": "2024-12-15T14:37:52Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "43",
+        "articleId": "74",
+        "checkerId": "1",
+        "result": "FALSE",
+        "description": "The botanical information in 'The Secret of the Golden Flower' contains multiple scientific inaccuracies.",
+        "checkDate": {
+            "$date": "2024-01-10T09:23:15Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "44",
+        "articleId": "86",
+        "checkerId": "20",
+        "result": "FALSE",
+        "description": "The gemological details in 'The Secret of the Jasper Jewel' are significantly incorrect.",
+        "checkDate": {
+            "$date": "2025-03-25T12:48:33Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "45",
+        "articleId": "88",
+        "checkerId": "4",
+        "result": "FALSE",
+        "description": "The historical timeline in 'A Journey Through Time' contains multiple chronological errors.",
+        "checkDate": {
+            "$date": "2023-12-10T10:17:42Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "46",
+        "articleId": "89",
+        "checkerId": "8",
+        "result": "FALSE",
+        "description": "The gemological information in 'The Secret of the Malachite Mirror' is scientifically inaccurate.",
+        "checkDate": {
+            "$date": "2025-01-15T15:32:27Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "47",
+        "articleId": "91",
+        "checkerId": "3",
+        "result": "FALSE",
+        "description": "The gemological claims in 'The Secret of the Jasper Jewel' are contradicted by mineralogical evidence.",
+        "checkDate": {
+            "$date": "2023-08-01T11:43:19Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "48",
+        "articleId": "94",
+        "checkerId": "7",
+        "result": "FALSE",
+        "description": "The botanical and historical details in 'The Secret Garden' contain multiple factual errors.",
+        "checkDate": {
+            "$date": "2023-06-25T14:25:31Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "49",
+        "articleId": "97",
+        "checkerId": "22",
+        "result": "FALSE",
+        "description": "The architectural information in 'The Secret Passage' is historically inaccurate.",
+        "checkDate": {
+            "$date": "2024-12-15T09:17:43Z"
+        },
+        "aiVerificationResult": "CONFIRMED"
+    },
+    {
+        "_id": "50",
+        "articleId": "9",
+        "checkerId": "4",
+        "result": "PARTLY_TRUE",
+        "description": "While some historical details in 'The Secret of the Moonstone Medallion' are accurate, others cannot be verified.",
+        "checkDate": {
+            "$date": "2025-03-05T11:25:37Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "51",
+        "articleId": "10",
+        "checkerId": "1",
+        "result": "PARTLY_TRUE",
+        "description": "The article 'The Secret of the Aquamarine Ankh' contains some accurate information about Egyptian artifacts, but exaggerates their significance.",
+        "checkDate": {
+            "$date": "2023-04-25T14:22:18Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "52",
+        "articleId": "18",
+        "checkerId": "20",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological information in 'The Secret of the Sapphire Star' is mostly accurate, but some historical claims are unverifiable.",
+        "checkDate": {
+            "$date": "2023-11-05T09:43:27Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "53",
+        "articleId": "20",
+        "checkerId": "3",
+        "result": "PARTLY_TRUE",
+        "description": "While the geological information about amethyst in the article is accurate, the historical context contains some inaccuracies.",
+        "checkDate": {
+            "$date": "2024-02-01T16:15:42Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "54",
+        "articleId": "24",
+        "checkerId": "6",
+        "result": "PARTLY_TRUE",
+        "description": "The cryptography details in 'The Secret Code' are technically accurate, but the historical context is oversimplified.",
+        "checkDate": {
+            "$date": "2023-04-20T12:37:15Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "55",
+        "articleId": "30",
+        "checkerId": "7",
+        "result": "PARTLY_TRUE",
+        "description": "The geographical details in 'The Forgotten Kingdom' are accurate, but some historical claims lack sufficient evidence.",
+        "checkDate": {
+            "$date": "2025-05-20T10:15:33Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "56",
+        "articleId": "41",
+        "checkerId": "8",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological information about citrine is accurate, but the historical narrative contains some unverifiable elements.",
+        "checkDate": {
+            "$date": "2023-11-25T14:25:48Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "57",
+        "articleId": "45",
+        "checkerId": "1",
+        "result": "PARTLY_TRUE",
+        "description": "The cryptography concepts in 'The Secret Code' are accurately presented, but the historical examples contain some inaccuracies.",
+        "checkDate": {
+            "$date": "2023-07-15T09:38:22Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "58",
+        "articleId": "46",
+        "checkerId": "20",
+        "result": "PARTLY_TRUE",
+        "description": "The historical setting of 'The Midnight Masquerade' is accurate, but some specific events described are embellished.",
+        "checkDate": {
+            "$date": "2025-04-05T12:17:39Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "59",
+        "articleId": "52",
+        "checkerId": "3",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological details about the diamond are accurate, but the theft narrative contains some unverifiable claims.",
+        "checkDate": {
+            "$date": "2023-04-25T16:42:23Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "60",
+        "articleId": "56",
+        "checkerId": "4",
+        "result": "PARTLY_TRUE",
+        "description": "The botanical information in 'The Secret of the Golden Flower' is scientifically accurate, but the cultural significance is overstated.",
+        "checkDate": {
+            "$date": "2023-11-05T11:25:17Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "61",
+        "articleId": "60",
+        "checkerId": "7",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological information about rubies is accurate, but some of the historical provenance claims lack sufficient evidence.",
+        "checkDate": {
+            "$date": "2025-05-11T14:28:33Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "62",
+        "articleId": "71",
+        "checkerId": "8",
+        "result": "PARTLY_TRUE",
+        "description": "While the organizational structure described in 'The Secret Society' is plausible, some specific historical claims are unverifiable.",
+        "checkDate": {
+            "$date": "2024-10-25T09:19:47Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "63",
+        "articleId": "73",
+        "checkerId": "6",
+        "result": "PARTLY_TRUE",
+        "description": "The botanical information in 'The Secret of the Golden Flower' is accurate, but the medicinal claims are not fully supported by research.",
+        "checkDate": {
+            "$date": "2024-03-10T12:34:21Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "64",
+        "articleId": "77",
+        "checkerId": "22",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological details about emeralds are accurate, but the historical narrative contains some speculative elements.",
+        "checkDate": {
+            "$date": "2024-05-01T15:43:27Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "65",
+        "articleId": "80",
+        "checkerId": "4",
+        "result": "PARTLY_TRUE",
+        "description": "The ecological information in 'Secrets of the Enchanted Forest' is scientifically sound, but some cultural claims are exaggerated.",
+        "checkDate": {
+            "$date": "2023-11-05T10:17:32Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "66",
+        "articleId": "82",
+        "checkerId": "1",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological information about topaz is accurate, but the historical significance attributed to specific artifacts is overstated.",
+        "checkDate": {
+            "$date": "2024-10-30T13:25:28Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "67",
+        "articleId": "90",
+        "checkerId": "3",
+        "result": "PARTLY_TRUE",
+        "description": "The historical context of 'The Legend of the Golden Key' is well-researched, but some specific claims about the key's powers are unfounded.",
+        "checkDate": {
+            "$date": "2024-02-25T09:32:15Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "68",
+        "articleId": "100",
+        "checkerId": "7",
+        "result": "PARTLY_TRUE",
+        "description": "The gemological information about lapis lazuli is accurate, but some of the historical significance claims lack sufficient evidence.",
+        "checkDate": {
+            "$date": "2023-05-15T12:28:43Z"
+        },
+        "aiVerificationResult": "CONTESTED"
+    },
+    {
+        "_id": "69",
+        "articleId": "2",
+        "checkerId": "4",
+        "result": "UNVERIFIABLE",
+        "description": "Many claims in 'The Secret of the Turquoise Trinket' cannot be verified with available sources.",
+        "checkDate": {
+            "$date": "2025-04-15T10:32:17Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "70",
+        "articleId": "3",
+        "checkerId": "1",
+        "result": "UNVERIFIABLE",
+        "description": "The existence of the treasure map described in the article cannot be confirmed or denied with available evidence.",
+        "checkDate": {
+            "$date": "2024-02-15T12:47:33Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "71",
+        "articleId": "4",
+        "checkerId": "8",
+        "result": "UNVERIFIABLE",
+        "description": "The kingdom described in 'The Forgotten Kingdom' has limited archaeological evidence to confirm its existence as described.",
+        "checkDate": {
+            "$date": "2024-05-15T15:28:19Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "72",
+        "articleId": "8",
+        "checkerId": "6",
+        "result": "UNVERIFIABLE",
+        "description": "The secret passage described in the article has no documented evidence to confirm or deny its existence.",
+        "checkDate": {
+            "$date": "2023-10-30T09:15:42Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "73",
+        "articleId": "15",
+        "checkerId": "3",
+        "result": "UNVERIFIABLE",
+        "description": "The malachite mirror described in the article cannot be confirmed to exist in any museum or private collection.",
+        "checkDate": {
+            "$date": "2023-12-05T13:47:29Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "74",
+        "articleId": "17",
+        "checkerId": "22",
+        "result": "UNVERIFIABLE",
+        "description": "The Egyptian ankh described in the article cannot be verified to exist in any archaeological record.",
+        "checkDate": {
+            "$date": "2023-04-25T10:18:37Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "75",
+        "articleId": "25",
+        "checkerId": "7",
+        "result": "UNVERIFIABLE",
+        "description": "The island described in 'The Mysterious Island' cannot be identified with any known geographical location.",
+        "checkDate": {
+            "$date": "2023-12-05T14:35:42Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+        "_id": "76",
+        "articleId": "26",
+        "checkerId": "4",
+        "result": "UNVERIFIABLE",
+        "description": "The diamond necklace described in the article cannot be verified to exist in any museum or private collection.",
+        "checkDate": {
+            "$date": "2023-10-01T11:23:18Z"
+        },
+        "aiVerificationResult": "INCONCLUSIVE"
+    },
+    {
+    "_id": "77",
+    "articleId": "27",
+    "checkerId": "20",
+    "result": "UNVERIFIABLE",
+    "description": "The masquerade ball described in the article cannot be confirmed with historical records.",
+    "checkDate": {"$date": "2023-06-01T09:27:36Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "78",
+    "articleId": "28",
+    "checkerId": "1",
+    "result": "UNVERIFIABLE",
+    "description": "The garnet gem described in the article cannot be verified to exist in any known collection.",
+    "checkDate": {"$date": "2024-01-05T12:47:23Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "79",
+    "articleId": "29",
+    "checkerId": "3",
+    "result": "UNVERIFIABLE",
+    "description": "The emerald eye artifact described has no documentary evidence of its existence.",
+    "checkDate": {"$date": "2024-12-15T15:32:41Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "80",
+    "articleId": "32",
+    "checkerId": "8",
+    "result": "UNVERIFIABLE",
+    "description": "The moonstone medallion cannot be confirmed to exist in any museum or private collection.",
+    "checkDate": {"$date": "2023-10-25T10:18:37Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "81",
+    "articleId": "33",
+    "checkerId": "6",
+    "result": "UNVERIFIABLE",
+    "description": "The secret passage described in the article has no documented evidence of its existence.",
+    "checkDate": {"$date": "2024-06-30T14:15:29Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "82",
+    "articleId": "34",
+    "checkerId": "22",
+    "result": "UNVERIFIABLE",
+    "description": "The phantom described in the article cannot be confirmed or denied with available historical records.",
+    "checkDate": {"$date": "2025-01-25T09:42:17Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "83",
+    "articleId": "36",
+    "checkerId": "7",
+    "result": "UNVERIFIABLE",
+    "description": "The kingdom described in the article cannot be identified with any archaeological site.",
+    "checkDate": {"$date": "2024-10-25T12:33:45Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "84",
+    "articleId": "37",
+    "checkerId": "4",
+    "result": "UNVERIFIABLE",
+    "description": "The magical properties attributed to the mirror cannot be confirmed or denied with scientific evidence.",
+    "checkDate": {"$date": "2023-06-20T15:27:38Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "85",
+    "articleId": "38",
+    "checkerId": "1",
+    "result": "UNVERIFIABLE",
+    "description": "The sphinx artifact described in the article cannot be verified to exist in any collection.",
+    "checkDate": {"$date": "2024-04-05T10:15:23Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "86",
+    "articleId": "42",
+    "checkerId": "3",
+    "result": "UNVERIFIABLE",
+    "description": "The golden flower described in the article cannot be identified with any known botanical species.",
+    "checkDate": {"$date": "2023-06-01T13:47:29Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "87",
+    "articleId": "49",
+    "checkerId": "8",
+    "result": "UNVERIFIABLE",
+    "description": "The forbidden scroll mentioned in the article cannot be verified to exist in any archive.",
+    "checkDate": {"$date": "2023-07-01T09:23:15Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "88",
+    "articleId": "50",
+    "checkerId": "6",
+    "result": "UNVERIFIABLE",
+    "description": "The haunted mansion described in the article cannot be identified with any known historical building.",
+    "checkDate": {"$date": "2025-03-25T12:37:42Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "89",
+    "articleId": "51",
+    "checkerId": "22",
+    "result": "UNVERIFIABLE",
+    "description": "The tanzanite tiara described in the article cannot be confirmed to exist in any collection.",
+    "checkDate": {"$date": "2023-07-05T15:28:31Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "90",
+    "articleId": "57",
+    "checkerId": "7",
+    "result": "UNVERIFIABLE",
+    "description": "The pirate's treasure described in the article has no documented evidence of its existence.",
+    "checkDate": {"$date": "2024-02-25T11:17:23Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "91",
+    "articleId": "58",
+    "checkerId": "4",
+    "result": "UNVERIFIABLE",
+    "description": "The treasure described in the article cannot be verified with any historical record or archaeological finding.",
+    "checkDate": {"$date": "2023-01-25T09:42:17Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "92",
+    "articleId": "61",
+    "checkerId": "1",
+    "result": "UNVERIFIABLE",
+    "description": "The diamond necklace mentioned in the article cannot be verified to exist in any collection.",
+    "checkDate": {"$date": "2025-01-15T13:28:42Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "93",
+    "articleId": "75",
+    "checkerId": "20",
+    "result": "UNVERIFIABLE",
+    "description": "The ghostly visitor phenomenon described cannot be confirmed or denied with available evidence.",
+    "checkDate": {"$date": "2023-05-01T10:15:37Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "94",
+    "articleId": "76",
+    "checkerId": "3",
+    "result": "UNVERIFIABLE",
+    "description": "The moonstone medallion described in the article cannot be verified to exist in any collection.",
+    "checkDate": {"$date": "2024-08-25T14:47:29Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "95",
+    "articleId": "81",
+    "checkerId": "8",
+    "result": "UNVERIFIABLE",
+    "description": "The ghostly visitor phenomenon described in the article cannot be scientifically verified.",
+    "checkDate": {"$date": "2023-02-15T09:23:18Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "96",
+    "articleId": "83",
+    "checkerId": "6",
+    "result": "UNVERIFIABLE",
+    "description": "The secret society described in the article cannot be verified to exist with available evidence.",
+    "checkDate": {"$date": "2023-04-05T12:37:42Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "97",
+    "articleId": "84",
+    "checkerId": "22",
+    "result": "UNVERIFIABLE",
+    "description": "The cursed pearl described in the article cannot be verified to exist in any collection.",
+    "checkDate": {"$date": "2023-06-25T15:28:31Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "98",
+    "articleId": "93",
+    "checkerId": "7",
+    "result": "UNVERIFIABLE",
+    "description": "The sphinx artifact described in the article cannot be identified with any known archaeological find.",
+    "checkDate": {"$date": "2024-05-20T11:17:23Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "99",
+    "articleId": "95",
+    "checkerId": "4",
+    "result": "UNVERIFIABLE",
+    "description": "The emerald eye described in the article cannot be verified to exist in any collection.",
+    "checkDate": {"$date": "2024-07-01T09:42:17Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  },
+  {
+    "_id": "100",
+    "articleId": "99",
+    "checkerId": "1",
+    "result": "UNVERIFIABLE",
+    "description": "The treasure map described in the article cannot be verified to exist in any archive or collection.",
+    "checkDate": {"$date": "2023-08-15T13:28:42Z"},
+    "aiVerificationResult": "INCONCLUSIVE"
+  }
+]

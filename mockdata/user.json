@@ -1,25 +1,252 @@
-[{"id":1,"username":"tparrot0","email":"skeson0@prnewswire.com","password":"Pwd@1234","role":"ADMIN","registrationDate":"2023-01-18T10:51:50Z"},
-{"id":2,"username":"psuch1","email":"tbrimmacombe1@adobe.com","password":"P@ssw0rd123","role":"AUTHOR","registrationDate":"2023-07-31T16:13:14Z"},
-{"id":3,"username":"wbanbrick2","email":"cmattocks2@admin.ch","password":"Secret123","role":"ADMIN","registrationDate":"2024-02-27T03:51:57Z"},
-{"id":4,"username":"rdensie3","email":"acathenod3@bandcamp.com","password":"SecurePwd!","role":"READER","registrationDate":"2024-07-03T13:44:09Z"},
-{"id":5,"username":"lsivorn4","email":"djedrzejczak4@pinterest.com","password":"P@ssw0rd123","role":"FACT_CHECKER","registrationDate":"2023-07-09T19:29:26Z"},
-{"id":6,"username":"vsadlier5","email":"bkubicki5@cyberchimps.com","password":"Secure123!","role":"FACT_CHECKER","registrationDate":"2023-01-11T18:59:40Z"},
-{"id":7,"username":"mryde6","email":"ttune6@feedburner.com","password":"StrongPwd#","role":"FACT_CHECKER","registrationDate":"2024-06-18T13:55:34Z"},
-{"id":8,"username":"zfere7","email":"sfarquar7@qq.com","password":"SecurePwd!","role":"ADMIN","registrationDate":"2025-03-23T07:32:39Z"},
-{"id":9,"username":"ssergeant8","email":"cyetman8@netvibes.com","password":"P@ssw0rd123","role":"READER","registrationDate":"2023-05-19T07:00:26Z"},
-{"id":10,"username":"ctwiggins9","email":"dharman9@fema.gov","password":"Pass123!","role":"AUTHOR","registrationDate":"2023-11-05T07:40:25Z"},
-{"id":11,"username":"gconnechiea","email":"tprettya@addtoany.com","password":"Pa55w0rd!","role":"FACT_CHECKER","registrationDate":"2023-03-04T03:40:13Z"},
-{"id":12,"username":"lkilbanb","email":"dbowsb@comcast.net","password":"SafePassword","role":"FACT_CHECKER","registrationDate":"2025-01-03T05:16:34Z"},
-{"id":13,"username":"fbasekc","email":"gedgecombec@google.com","password":"Pa55w0rd!","role":"READER","registrationDate":"2024-03-23T16:07:06Z"},
-{"id":14,"username":"lkienled","email":"wnasebyd@storify.com","password":"P@ssw0rd123","role":"ADMIN","registrationDate":"2024-06-02T17:35:24Z"},
-{"id":15,"username":"fvogelee","email":"lperforde@ning.com","password":"Secure123!","role":"AUTHOR","registrationDate":"2024-03-31T11:54:46Z"},
-{"id":16,"username":"bhillittf","email":"smerritonf@ning.com","password":"P@ssw0rd123","role":"AUTHOR","registrationDate":"2023-09-09T01:55:49Z"},
-{"id":17,"username":"lriepg","email":"vgaraghang@gravatar.com","password":"1234abcd!","role":"READER","registrationDate":"2023-04-27T01:59:28Z"},
-{"id":18,"username":"jpuddiferh","email":"bchisholmeh@quantcast.com","password":"SecurePwd!","role":"ADMIN","registrationDate":"2024-11-26T22:23:35Z"},
-{"id":19,"username":"dbrassingtoni","email":"bodunniomi@sphinn.com","password":"Secure123!","role":"READER","registrationDate":"2023-03-28T22:46:28Z"},
-{"id":20,"username":"rcullrfordj","email":"shammerj@godaddy.com","password":"Secure123!","role":"ADMIN","registrationDate":"2023-03-18T09:52:58Z"},
-{"id":21,"username":"fnerhenyk","email":"eshoebothamk@clickbank.net","password":"SafePassword","role":"READER","registrationDate":"2023-05-04T10:30:01Z"},
-{"id":22,"username":"tbengall","email":"ebrundlel@cmu.edu","password":"Pass123!","role":"AUTHOR","registrationDate":"2023-04-11T23:53:30Z"},
-{"id":23,"username":"tyuryatinm","email":"dgravattm@wunderground.com","password":"Pa55w0rd!","role":"AUTHOR","registrationDate":"2023-12-24T14:50:16Z"},
-{"id":24,"username":"gphilipardn","email":"jlambornn@twitpic.com","password":"P@ssw0rd123","role":"READER","registrationDate":"2025-03-08T03:57:39Z"},
-{"id":25,"username":"strotto","email":"amoncreiffo@youku.com","password":"Secret123","role":"FACT_CHECKER","registrationDate":"2024-08-03T02:35:34Z"}]
+[
+    {
+        "_id": "1",
+        "username": "dverner0",
+        "email": "dbingley0@phoca.cz",
+        "password": "P@ssw0rd!2029",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2023-04-23T00:00:00Z"
+        }
+    },
+    {
+        "_id": "2",
+        "username": "ksockell1",
+        "email": "isweetsur1@yahoo.co.jp",
+        "password": "P@ssw0rd!2030",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2025-03-02T00:00:00Z"
+        }
+    },
+    {
+        "_id": "3",
+        "username": "cspurrior2",
+        "email": "cassard2@netscape.com",
+        "password": "P@ssw0rd!2039",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2025-03-10T00:00:00Z"
+        }
+    },
+    {
+        "_id": "4",
+        "username": "mbrunning3",
+        "email": "kletterese3@printfriendly.com",
+        "password": "SafeP@ss",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2025-01-04T00:00:00Z"
+        }
+    },
+    {
+        "_id": "5",
+        "username": "ehalfhyde4",
+        "email": "atruckett4@instagram.com",
+        "password": "P@ssw0rd!2025",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2023-05-24T00:00:00Z"
+        }
+    },
+    {
+        "_id": "6",
+        "username": "rvango5",
+        "email": "aoager5@wufoo.com",
+        "password": "P@ssw0rd!2037",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2023-08-05T00:00:00Z"
+        }
+    },
+    {
+        "_id": "7",
+        "username": "ekorneichik6",
+        "email": "lsiddle6@yolasite.com",
+        "password": "P@ssw0rd!2024",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2024-06-26T00:00:00Z"
+        }
+    },
+    {
+        "_id": "8",
+        "username": "scominoli7",
+        "email": "celam7@miitbeian.gov.cn",
+        "password": "P@ssw0rd1",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2023-12-27T00:00:00Z"
+        }
+    },
+    {
+        "_id": "9",
+        "username": "cchrstine8",
+        "email": "klimpertz8@sciencedaily.com",
+        "password": "P@ssw0rd!2032",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2024-11-20T00:00:00Z"
+        }
+    },
+    {
+        "_id": "10",
+        "username": "iwitard9",
+        "email": "slightoller9@arizona.edu",
+        "password": "P@ssw0rd!2027",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2023-07-21T00:00:00Z"
+        }
+    },
+    {
+        "_id": "11",
+        "username": "ctreesa",
+        "email": "odymotta@bloglovin.com",
+        "password": "SafeP@ss",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2025-04-07T00:00:00Z"
+        }
+    },
+    {
+        "_id": "12",
+        "username": "baceb",
+        "email": "jarstallb@ox.ac.uk",
+        "password": "P@ssw0rd!2025",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2024-06-23T00:00:00Z"
+        }
+    },
+    {
+        "_id": "13",
+        "username": "gpaylec",
+        "email": "aslydec@nifty.com",
+        "password": "P@ssw0rd!2032",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2023-01-14T00:00:00Z"
+        }
+    },
+    {
+        "_id": "14",
+        "username": "gridesdaled",
+        "email": "tstrathmand@360.cn",
+        "password": "P@ssw0rd123",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2023-06-04T00:00:00Z"
+        }
+    },
+    {
+        "_id": "15",
+        "username": "ldolmane",
+        "email": "seccotte@npr.org",
+        "password": "P@ssw0rd!23",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2024-07-28T00:00:00Z"
+        }
+    },
+    {
+        "_id": "16",
+        "username": "sfairnf",
+        "email": "ngioanif@bbc.co.uk",
+        "password": "P@ssw0rd!2039",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2024-01-03T00:00:00Z"
+        }
+    },
+    {
+        "_id": "17",
+        "username": "hcaudleg",
+        "email": "frymang@ihg.com",
+        "password": "P@ssw0rd!2026",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2024-10-11T00:00:00Z"
+        }
+    },
+    {
+        "_id": "18",
+        "username": "nwinnyh",
+        "email": "npauh@jigsy.com",
+        "password": "P@ssw0rd!2031",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2025-03-21T00:00:00Z"
+        }
+    },
+    {
+        "_id": "19",
+        "username": "akemeri",
+        "email": "rpowersi@quantcast.com",
+        "password": "P@ssw0rd!2033",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2023-01-27T00:00:00Z"
+        }
+    },
+    {
+        "_id": "20",
+        "username": "hrensj",
+        "email": "wsloamj@artisteer.com",
+        "password": "P@ssw0rd!2027",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2024-05-08T00:00:00Z"
+        }
+    },
+    {
+        "_id": "21",
+        "username": "psharvillek",
+        "email": "hkiddsk@mysql.com",
+        "password": "P@ssw0rd!2039",
+        "role": "READER",
+        "registrationDate": {
+            "$date": "2023-10-29T00:00:00Z"
+        }
+    },
+    {
+        "_id": "22",
+        "username": "lokroyl",
+        "email": "abrownettl@cpanel.net",
+        "password": "P@ssw0rd!2025",
+        "role": "FACT_CHECKER",
+        "registrationDate": {
+            "$date": "2023-08-21T00:00:00Z"
+        }
+    },
+    {
+        "_id": "23",
+        "username": "bemlenm",
+        "email": "jcosslettm@alibaba.com",
+        "password": "SafeP@ss",
+        "role": "ADMIN",
+        "registrationDate": {
+            "$date": "2024-10-27T00:00:00Z"
+        }
+    },
+    {
+        "_id": "24",
+        "username": "tarrelln",
+        "email": "hboudn@examiner.com",
+        "password": "P@ssw0rd!2036",
+        "role": "AUTHOR",
+        "registrationDate": {
+            "$date": "2023-10-15T00:00:00Z"
+        }
+    },
+    {
+        "_id": "25",
+        "username": "hbromwicho",
+        "email": "slassetero@auda.org.au",
+        "password": "Secur3P@ss",
+        "role": "READER",
+        "registrationDate": {
+            "$date": "2024-07-22T00:00:00Z"
+        }
+    }
+]
