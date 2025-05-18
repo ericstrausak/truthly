@@ -2,6 +2,7 @@
   import axios from "axios";
   import { page } from "$app/state";
   import { onMount } from "svelte";
+  import { jwt_token } from "../../store";
 
   const api_root = page.url.origin;
 
@@ -61,7 +62,7 @@
     var config = {
       method: "get",
       url: api_root + "/api/factcheck",
-      headers: {},
+      headers: { Authorization: "Bearer " + $jwt_token },
     };
 
     axios(config)
@@ -104,14 +105,14 @@
 
   // Helper function to get article title by ID
   function getArticleTitle(articleId) {
-    const article = articles.find(a => a.id === articleId);
-    return article ? article.title : 'Unknown Article';
+    const article = articles.find((a) => a.id === articleId);
+    return article ? article.title : "Unknown Article";
   }
 
   // Helper function to get user name by ID
   function getUserName(userId) {
-    const user = users.find(u => u.id === userId);
-    return user ? user.username : 'Unknown User';
+    const user = users.find((u) => u.id === userId);
+    return user ? user.username : "Unknown User";
   }
 </script>
 
@@ -131,7 +132,7 @@
       <label class="form-label" for="checker">Fact Checker</label>
       <select bind:value={factCheck.checkerId} class="form-select" id="checker">
         <option value="">Select Checker</option>
-        {#each users.filter(user => user.role === 'FACT_CHECKER' || user.role === 'ADMIN') as user}
+        {#each users.filter((user) => user.role === "FACT_CHECKER" || user.role === "ADMIN") as user}
           <option value={user.id}>{user.username} ({user.role})</option>
         {/each}
       </select>
@@ -184,7 +185,13 @@
           <td>{getArticleTitle(factCheckItem.articleId)}</td>
           <td>{getUserName(factCheckItem.checkerId)}</td>
           <td>
-            <span class="badge bg-{factCheckItem.result === 'TRUE' ? 'success' : factCheckItem.result === 'FALSE' ? 'danger' : 'warning'}">
+            <span
+              class="badge bg-{factCheckItem.result === 'TRUE'
+                ? 'success'
+                : factCheckItem.result === 'FALSE'
+                  ? 'danger'
+                  : 'warning'}"
+            >
               {factCheckItem.result}
             </span>
           </td>
@@ -198,8 +205,9 @@
   <div class="alert alert-info">
     <p>No fact checks available yet. Create your first fact check above!</p>
     <small class="text-muted">
-      Note: The fact check list endpoint might not be implemented yet. 
-      You can still create fact checks, but they won't appear in this table until you add a GET /api/factcheck endpoint.
+      Note: The fact check list endpoint might not be implemented yet. You can
+      still create fact checks, but they won't appear in this table until you
+      add a GET /api/factcheck endpoint.
     </small>
   </div>
 {/if}
