@@ -26,6 +26,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/articles">Articles</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/factchecks">Fact Checks</a>
+        </li>
       </ul>
     </div>
   </div>

@@ -103,6 +103,7 @@
       <select bind:value={user.role} class="form-select" id="role">
         <option value="">Select Role</option>
         <option value="USER">User</option>
+        <option value="AUTHOR">Author</option>
         <option value="FACT_CHECKER">Fact Checker</option>
         <option value="ADMIN">Admin</option>
       </select>
