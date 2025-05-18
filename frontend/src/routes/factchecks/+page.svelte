@@ -145,6 +145,7 @@
         <option value="TRUE">True</option>
         <option value="FALSE">False</option>
         <option value="PARTLY_TRUE">Partly True</option>
+        <option value="UNVERIFIABLE">Unverifiable</option>
       </select>
     </div>
   </div>
