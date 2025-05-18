@@ -1,4 +1,29 @@
-/* In dieser Datei können globale Styles definiert werden */
+/* Global styles for Truthly */
 h1 {
-    color: orangered;
+    color: #2c3e50;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+}
+
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
 }

@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Freelancer4U</a>
+    <a class="navbar-brand" href="/">Truthly</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,17 +14,17 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon" />
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/companies"
-            >Companies</a
+          <a class="nav-link" aria-current="page" href="/users"
+            >Users</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/jobs">Jobs</a>
+          <a class="nav-link" href="/articles">Articles</a>
         </li>
       </ul>
     </div>
