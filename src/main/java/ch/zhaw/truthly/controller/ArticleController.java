@@ -34,30 +34,29 @@ public class ArticleController {
     @Autowired
     UserService userService;
 
-   @PostMapping("/article")
-public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
-    try {
-        // Check if the author exists
-        if (!userService.userExists(articleDTO.getAuthorId())) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    @PostMapping("/article")
+    public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
+        try {
+            // Check if the author exists
+            if (!userService.userExists(articleDTO.getAuthorId())) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
 
-        // Create an Article object according to your existing constructor
-        // Adjust this based on your actual constructor parameters
-        Article article = new Article();
-        
-        // Manually set each field
-        article.setTitle(articleDTO.getTitle());
-        article.setContent(articleDTO.getContent());
-        article.setAuthorId(articleDTO.getAuthorId());
-        article.setAnonymous(articleDTO.isAnonymous());
-        
-        Article savedArticle = articleRepository.save(article);
-        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
-    } catch (Exception e) {
-        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            // Use the constructor we created - das übergibt ArticleType korrekt!
+            Article article = new Article(
+                    articleDTO.getTitle(),
+                    articleDTO.getContent(),
+                    articleDTO.getAuthorId(),
+                    articleDTO.isAnonymous(),
+                    articleDTO.getArticleType() // WICHTIG: Wird jetzt korrekt übernommen!
+            );
+
+            Article savedArticle = articleRepository.save(article);
+            return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-}
 
     @GetMapping("/article")
     public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false) String type) {

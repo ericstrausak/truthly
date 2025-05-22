@@ -216,7 +216,7 @@ class FactCheckControllerTest {
         // When & Then
         mockMvc.perform(post("/api/factcheck/ai-verify/nonexistent-id"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("Article not found"))
+                .andExpect(content().string("Article not found"));
     }
 
     @Test
@@ -253,7 +253,7 @@ class FactCheckControllerTest {
         mockMvc.perform(get("/api/factcheck"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$", hasSize(0)))
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test
