@@ -20,8 +20,11 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/*").permitAll()
-                .requestMatchers("/api/**").authenticated()
-                .requestMatchers("/**").permitAll()           
+                .requestMatchers("/api/user").permitAll()           // User-Erstellung erlauben
+                .requestMatchers("/api/article").permitAll()        // Article-Erstellung erlauben  
+                .requestMatchers("/api/factcheck/**").permitAll()   // Fact-Check erlauben
+                .requestMatchers("/api/**").authenticated()         // Andere API-Calls authentifiziert
+                .requestMatchers("/**").permitAll()              
             )
             .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
 

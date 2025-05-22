@@ -110,14 +110,15 @@
   </div>
   <div class="row mb-3">
     <div class="col">
-      <label class="form-label" for="author">Author</label>
-      <select bind:value={article.authorId} class="form-select" id="author">
-        <option value="">Select Author</option>
-        {#each users as user}
-          <option value={user.id}>{user.username}</option>
-        {/each}
-      </select>
-    </div>
+  <label class="form-label" for="author">Author ID</label>
+  <input
+    bind:value={article.authorId}
+    class="form-control"
+    type="text"
+    id="author"
+    placeholder="Enter Author ID"
+  />
+</div>
     <div class="col">
       <label class="form-label" for="anonymous">Anonymous</label>
       <div class="form-check">
