@@ -65,7 +65,7 @@ jobs:
         run: |
           echo "FROM openjdk:21-jdk-slim" > Dockerfile.simple
           echo "WORKDIR /app" >> Dockerfile.simple
-          echo "COPY target/Truthly-0.0.1-SNAPSHOT.jar app.jar" >> Dockerfile.simple
+          echo "COPY target/truthly-0.0.1-SNAPSHOT.jar app.jar" >> Dockerfile.simple
           echo "EXPOSE 8080" >> Dockerfile.simple
           echo 'CMD ["java", "-jar", "app.jar"]' >> Dockerfile.simple
       
