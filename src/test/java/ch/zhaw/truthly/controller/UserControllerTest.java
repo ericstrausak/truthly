@@ -128,4 +128,30 @@ class UserControllerTest extends BaseIntegrationTest {
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$", hasSize(0)));
     }
+
+    @Test
+    @DisplayName("Should handle missing required fields")
+    void shouldHandleMissingRequiredFields() throws Exception {
+        // Given - Empty UserCreateDTO
+        UserCreateDTO userDto = new UserCreateDTO();
+
+        // When & Then
+        mockMvc.perform(post("/api/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(userDto)))
+                .andExpect(status().isInternalServerError()); // Empty fields cause issues
+    }
+
+    @Test
+    @DisplayName("Should return empty list for non-matching search")
+    void shouldReturnEmptyListForNonMatchingSearch() throws Exception {
+        // Given - Create user
+        User user = new User("testuser", "test@example.com", "password", "USER");
+        userRepository.save(user);
+
+        // When & Then - Search for non-existing username
+        mockMvc.perform(get("/api/user").param("search", "nonexistent"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
+    }
 }

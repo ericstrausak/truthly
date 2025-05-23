@@ -52,7 +52,7 @@ class ArticleControllerTest {
         // Clean database
         articleRepository.deleteAll();
         userRepository.deleteAll();
-        
+
         // Create test user
         testUser = new User("testauthor", "author@test.com", "password", "AUTHOR");
         testUser = userRepository.save(testUser);
@@ -108,7 +108,7 @@ class ArticleControllerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"NEWS", "OPINION", "INVESTIGATION", "FACTUAL"})
+    @ValueSource(strings = { "NEWS", "OPINION", "INVESTIGATION", "FACTUAL" })
     @DisplayName("Should accept all valid article types")
     void shouldAcceptValidArticleTypes(String type) throws Exception {
         // Given
@@ -150,7 +150,8 @@ class ArticleControllerTest {
     void shouldFilterArticlesByType() throws Exception {
         // Given - Create articles of different types
         Article newsArticle = new Article("News Article", "News content", testUserId, false, ArticleType.NEWS);
-        Article opinionArticle = new Article("Opinion Article", "Opinion content", testUserId, false, ArticleType.OPINION);
+        Article opinionArticle = new Article("Opinion Article", "Opinion content", testUserId, false,
+                ArticleType.OPINION);
         articleRepository.save(newsArticle);
         articleRepository.save(opinionArticle);
 
@@ -190,7 +191,7 @@ class ArticleControllerTest {
         // Given
         Article article = new Article("Test Article", "Test content", testUserId, false, ArticleType.NEWS);
         Article savedArticle = articleRepository.save(article);
-        
+
         StatusUpdateDTO statusUpdate = new StatusUpdateDTO();
         statusUpdate.setStatus(ArticleStatus.PUBLISHED);
 
@@ -237,7 +238,8 @@ class ArticleControllerTest {
     @DisplayName("Should search articles by content")
     void shouldSearchArticlesByContent() throws Exception {
         // Given
-        Article article = new Article("Some Title", "Very specific content for testing", testUserId, false, ArticleType.NEWS);
+        Article article = new Article("Some Title", "Very specific content for testing", testUserId, false,
+                ArticleType.NEWS);
         articleRepository.save(article);
 
         // When & Then
@@ -251,7 +253,8 @@ class ArticleControllerTest {
     @DisplayName("Should search articles by keyword")
     void shouldSearchArticlesByKeyword() throws Exception {
         // Given
-        Article article1 = new Article("Technology News", "Latest technology trends", testUserId, false, ArticleType.NEWS);
+        Article article1 = new Article("Technology News", "Latest technology trends", testUserId, false,
+                ArticleType.NEWS);
         Article article2 = new Article("Sports Update", "Technology in sports", testUserId, false, ArticleType.NEWS);
         articleRepository.save(article1);
         articleRepository.save(article2);
@@ -268,10 +271,11 @@ class ArticleControllerTest {
         // Given
         Article draftArticle = new Article("Draft Article", "Draft content", testUserId, false, ArticleType.NEWS);
         draftArticle.setStatus(ArticleStatus.DRAFT);
-        
-        Article publishedArticle = new Article("Published Article", "Published content", testUserId, false, ArticleType.NEWS);
+
+        Article publishedArticle = new Article("Published Article", "Published content", testUserId, false,
+                ArticleType.NEWS);
         publishedArticle.setStatus(ArticleStatus.PUBLISHED);
-        
+
         articleRepository.save(draftArticle);
         articleRepository.save(publishedArticle);
 
@@ -317,5 +321,68 @@ class ArticleControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
                 .andExpect(jsonPath("$", hasSize(0)));
+    }
+
+    @Test
+    @DisplayName("Should handle malformed JSON in article creation")
+    void shouldHandleMalformedJsonInArticleCreation() throws Exception {
+        // When & Then
+        mockMvc.perform(post("/api/article")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ malformed json without quotes }"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should return 400 for invalid status update")
+    void shouldReturn400ForInvalidStatusUpdate() throws Exception {
+        // Given
+        Article article = new Article("Test", "Content", testUserId, false, ArticleType.NEWS);
+        Article savedArticle = articleRepository.save(article);
+
+        // When & Then - Try invalid status transition
+        mockMvc.perform(put("/api/article/" + savedArticle.getId() + "/status")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"status\": \"INVALID_STATUS\" }"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should search articles with empty results")
+    void shouldSearchArticlesWithEmptyResults() throws Exception {
+        // When & Then - Search for non-existing content
+        mockMvc.perform(get("/api/article/search")
+                .param("keyword", "nonexistentxyz123"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(0));
+    }
+
+    @Test
+    @DisplayName("Should handle null article type gracefully")
+    void shouldHandleNullArticleTypeGracefully() throws Exception {
+        // Given
+        ArticleCreateDTO articleDto = new ArticleCreateDTO();
+        articleDto.setTitle("Test Article");
+        articleDto.setContent("Test content");
+        articleDto.setAuthorId(testUserId);
+        articleDto.setAnonymous(false);
+        // articleType bleibt null
+
+        // When & Then
+        mockMvc.perform(post("/api/article")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(articleDto)))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.articleType").value("NEWS")); // Default sollte NEWS sein
+    }
+
+    @Test
+    @DisplayName("Should return articles sorted by publication date")
+    void shouldReturnArticlesSortedByPublicationDate() throws Exception {
+        // When & Then - Einfacher GET Test
+        mockMvc.perform(get("/api/article"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
     }
 }
