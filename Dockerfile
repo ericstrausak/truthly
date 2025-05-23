@@ -1,15 +1,18 @@
-FROM openjdk:21-jdk-slim
-RUN apt-get update && apt-get install -y curl \
- && curl -sL https://deb.nodesource.com/setup_20.x | bash - \
- && apt-get install -y nodejs \
- && curl -L https://www.npmjs.com/install.sh | npm_install="10.2.3" | sh
-WORKDIR /usr/src/app
+FROM node:20-slim AS frontend-build
+WORKDIR /app
+COPY frontend /app/
+RUN npm install
+RUN npm run build
+
+FROM eclipse-temurin:21-jdk-slim AS backend-build
+WORKDIR /app
 COPY . .
-RUN cd frontend && npm install
-RUN cd frontend && npm run build
-RUN rm -r frontend
-RUN sed -i 's/\r$//' mvnw
+COPY --from=frontend-build /app/dist /app/src/main/resources/static
 RUN chmod +x mvnw
-RUN ./mvnw package
+RUN ./mvnw package -DskipTests
+
+FROM eclipse-temurin:21-jdk-slim
+WORKDIR /app
+COPY --from=backend-build /app/target/Truthly-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-CMD ["java", "-jar", "/usr/src/app/target/Truthly-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
