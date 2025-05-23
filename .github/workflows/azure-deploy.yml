@@ -17,26 +17,64 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      # Frontend und Backend Build in GitHub Actions
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          mkdir -p ../src/main/resources/static
+          cp -r dist/* ../src/main/resources/static/ || cp -r build/* ../src/main/resources/static/
+      
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      
+      - name: Build with Maven
+        run: |
+          chmod +x ./mvnw
+          ./mvnw clean package -DskipTests
+      
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
       
       - name: Log in to GitHub container registry
-        uses: docker/login-action@v1.10.0
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ github.token }}
       
       - name: Lowercase the repo name and username
-        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+        run: echo "REPO=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+      
+      # Verwende ein einfaches Dockerfile
+      - name: Create simple Dockerfile
+        run: |
+          echo "FROM openjdk:21-jdk-slim" > Dockerfile.simple
+          echo "WORKDIR /app" >> Dockerfile.simple
+          echo "COPY target/Truthly-0.0.1-SNAPSHOT.jar app.jar" >> Dockerfile.simple
+          echo "EXPOSE 8080" >> Dockerfile.simple
+          echo 'CMD ["java", "-jar", "app.jar"]' >> Dockerfile.simple
       
       - name: Build and push container image to registry
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.sha }}
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          file: ./Dockerfile.simple
+          platforms: linux/amd64
   
   deploy:
     permissions:
@@ -45,7 +83,7 @@ jobs:
     needs: build
     steps:
       - name: Lowercase the repo name and username
-        run: echo "REPO=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+        run: echo "REPO=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
