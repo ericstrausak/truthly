@@ -3,7 +3,6 @@ package ch.zhaw.truthly.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ch.zhaw.truthly.model.FactCheck;
 import ch.zhaw.truthly.model.FactCheckCreateDTO;
@@ -34,12 +33,11 @@ public class FactCheckController {
 
     @Autowired
     UserRepository userRepository;
-
+    
     @Autowired
     AIFactCheckService aiFactCheckService;
 
     @PostMapping("/factcheck")
-    @PreAuthorize("hasRole('FACT_CHECKER') or hasRole('ADMIN')")
     public ResponseEntity<FactCheck> createFactCheck(@RequestBody FactCheckCreateDTO factCheckDTO) {
         try {
             // Check if the article exists
@@ -47,25 +45,27 @@ public class FactCheckController {
             if (!articleOpt.isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-
+            
             Article article = articleOpt.get();
-
+            
             // Perform AI fact-check first
             AIFactCheckResult aiResult = aiFactCheckService.performFactCheck(
-                    article.getTitle(),
-                    article.getContent());
-
+                article.getTitle(), 
+                article.getContent()
+            );
+            
             // Create FactCheck with AI result
             FactCheck factCheck = new FactCheck(
-                    factCheckDTO.getArticleId(),
-                    factCheckDTO.getCheckerId(),
-                    factCheckDTO.getResult(),
-                    factCheckDTO.getDescription(),
-                    aiResult.getRating().toString(),
-                    aiResult.getExplanation());
-
+                factCheckDTO.getArticleId(),
+                factCheckDTO.getCheckerId(),
+                factCheckDTO.getResult(),
+                factCheckDTO.getDescription(),
+                aiResult.getRating().toString(),
+                aiResult.getExplanation()
+            );
+            
             FactCheck savedFactCheck = factCheckRepository.save(factCheck);
-
+            
             // Update article status based on human fact-checker decision
             if (factCheckDTO.getResult() == FactCheckRating.TRUE) {
                 article.setStatus(ArticleStatus.VERIFIED);
@@ -73,16 +73,15 @@ public class FactCheckController {
                 article.setStatus(ArticleStatus.REJECTED);
             }
             articleRepository.save(article);
-
+            
             return new ResponseEntity<>(savedFactCheck, HttpStatus.CREATED);
-
+            
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/factcheck")
-    @PreAuthorize("hasRole('FACT_CHECKER') or hasRole('ADMIN')")
     public ResponseEntity<List<FactCheck>> getAllFactChecks() {
         try {
             List<FactCheck> factChecks = factCheckRepository.findAll();
@@ -93,7 +92,6 @@ public class FactCheckController {
     }
 
     @GetMapping("/factcheck/{id}")
-    @PreAuthorize("hasRole('FACT_CHECKER') or hasRole('ADMIN') or hasRole('AUTHOR')")
     public ResponseEntity<FactCheck> getFactCheckById(@PathVariable String id) {
         try {
             Optional<FactCheck> factCheckData = factCheckRepository.findById(id);
@@ -109,7 +107,6 @@ public class FactCheckController {
     }
 
     @PostMapping("/factcheck/ai-verify/{articleId}")
-    @PreAuthorize("hasRole('FACT_CHECKER') or hasRole('ADMIN') or hasRole('AUTHOR')")
     public ResponseEntity<?> performAIFactCheck(@PathVariable String articleId) {
         try {
             // Get the article
@@ -123,7 +120,8 @@ public class FactCheckController {
             // Perform AI fact-check
             AIFactCheckResult aiResult = aiFactCheckService.performFactCheck(
                     article.getTitle(),
-                    article.getContent());
+                    article.getContent()
+            );
 
             // Create response object
             Map<String, Object> response = new HashMap<>();

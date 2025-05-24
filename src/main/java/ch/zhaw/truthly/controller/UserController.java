@@ -3,7 +3,6 @@ package ch.zhaw.truthly.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ch.zhaw.truthly.model.User;
 import ch.zhaw.truthly.model.UserCreateDTO;
@@ -19,7 +18,6 @@ public class UserController {
     UserRepository userRepository;
     
     @PostMapping("/user")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<User> createUser(@RequestBody UserCreateDTO userDTO) {
         try {
             User user = new User(
