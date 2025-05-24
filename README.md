@@ -197,76 +197,157 @@ Nach dem Pitch in Woche 5/6 erhielten wir folgendes Feedback:
 
 # Anforderungen
 ## Use-Case Diagramm
-
-```mermaid
-graph TB
-    subgraph "Truthly System"
-        UC1[Artikel erstellen]
-        UC2[Artikel lesen]
-        UC3[Artikel für Prüfung zuweisen]
-        UC4[Faktencheck durchführen]
-        UC5[KI-Verifikation anfordern]
-        UC6[Benutzer verwalten]
-        UC7[Artikelstatus ändern]
-        UC8[Dashboard anzeigen]
-    end
-    
-    Reader[fa:fa-user Leser]
-    Author[fa:fa-pen Autor]
-    Checker[fa:fa-check Faktenchecker]
-    Admin[fa:fa-crown Admin]
-    AI[fa:fa-robot KI-System]
-    
-    Reader --> UC2
-    
-    Author --> UC1
-    Author --> UC8
-    Author --> UC2
-    
-    Checker --> UC3
-    Checker --> UC4
-    Checker --> UC5
-    Checker --> UC2
-    
-    Admin --> UC6
-    Admin --> UC7
-    Admin --> UC1
-    Admin --> UC2
-    Admin --> UC3
-    Admin --> UC4
-    
-    UC5 -.-> AI
-```
+![uc-Diagramm](/doc/Graphs/uc-diagram.drawio.svg)
 
 ## Use-Case Beschreibung
 
-### UC4: Faktencheck durchführen
+### UC1: Artikel lesen
 
-**Primärakteur**: Faktenchecker  
-**Stakeholder**: Autor, Leser, Admin  
-**Vorbedingungen**: 
-- Faktenchecker ist authentifiziert
-- Artikel existiert im Status PUBLISHED oder CHECKING
+**Primärakteur:** Leser  
+**Stakeholder:** Autor, Admin  
+**Vorbedingungen:**  
+- Der Nutzer ist authentifiziert (optional, je nach Systempolitik)  
+- Es existieren veröffentlichte Artikel (Status: PUBLISHED oder VERIFIED)  
 
-**Nachbedingungen**: 
-- Artikel hat Status VERIFIED oder REJECTED
-- FactCheck-Entität wurde erstellt
-- KI-Bewertung wurde gespeichert
+**Nachbedingungen:**  
+- Artikel wurde dem Nutzer angezeigt  
+- Lesezugriff wurde ggf. protokolliert  
 
-**Hauptszenario**:
-1. Faktenchecker wählt zu prüfenden Artikel aus
-2. System zeigt Artikelinhalt an
-3. Faktenchecker fordert KI-Analyse an
-4. System führt KI-Faktencheck durch und zeigt Ergebnis
-5. Faktenchecker überprüft Artikel manuell
-6. Faktenchecker gibt eigene Bewertung ab (TRUE/FALSE/PARTLY_TRUE/UNVERIFIABLE)
-7. Faktenchecker schreibt Begründung
-8. System speichert FactCheck mit KI- und Human-Bewertung
-9. System aktualisiert Artikelstatus basierend auf Bewertung
+**Hauptszenario:**  
+1. Leser ruft die Artikelübersicht oder Suche auf.  
+2. System zeigt eine Liste verfügbarer Artikel.  
+3. Leser wählt einen Artikel aus.  
+4. System zeigt den vollständigen Artikel an.  
 
-**Alternativszenarien**:
-- 3a. KI-Service nicht verfügbar → System verwendet Mock-Implementierung
-- 6a. Bewertung stimmt nicht mit KI überein → System markiert zur Review
+---
+
+### UC2: Artikel erstellen
+
+**Primärakteur:** Autor  
+**Stakeholder:** Admin  
+**Vorbedingungen:**  
+- Autor ist authentifiziert  
+
+**Nachbedingungen:**  
+- Neuer Artikel mit Status DRAFT (Entwurf) wurde erstellt  
+
+**Hauptszenario:**  
+1. Autor öffnet die Funktion „Artikel erstellen“.  
+2. System zeigt das Eingabeformular für Artikel.  
+3. Autor gibt Inhalt und Metadaten ein.  
+4. Autor speichert den Artikel.  
+5. System legt den Artikel im Status DRAFT an.  
+
+---
+
+### UC3: Artikelstatus ändern
+
+**Primärakteur:** Autor  
+**Stakeholder:** Admin  
+**Vorbedingungen:**  
+- Autor ist authentifiziert  
+- Artikel im Besitz des Autors existiert  
+
+**Nachbedingungen:**  
+- Artikelstatus wurde aktualisiert (z.B. von DRAFT auf PUBLISHED oder CHECKING)  
+
+**Hauptszenario:**  
+1. Autor öffnet die Artikelliste.  
+2. System zeigt alle eigenen Artikel.  
+3. Autor wählt einen Artikel und ändert den Status (z.B. „Veröffentlichen“).  
+4. System prüft Berechtigungen und ändert den Status.  
+
+---
+
+
+### UC4: Dashboard anzeigen
+
+**Primärakteur:** Leser, Autor, Faktenchecker, Admin  
+**Stakeholder:** –  
+**Vorbedingungen:**  
+- Nutzer ist authentifiziert  
+
+**Nachbedingungen:**  
+- Dashboard mit relevanten Informationen wurde angezeigt  
+
+**Hauptszenario:**  
+1. Nutzer öffnet das Dashboard.  
+2. System zeigt personalisierte Übersichten (z.B. eigene Artikel, Prüfaufträge, Statistiken).  
+
+---
+
+### UC5: KI-Verifikation anfordern
+
+**Primärakteur:** Leser, Faktenchecker, Admin  
+**Stakeholder:** Autor  
+**Vorbedingungen:**  
+- Nutzer ist authentifiziert  
+- Artikel existiert  
+
+**Nachbedingungen:**  
+- KI-Analyse für den Artikel wurde durchgeführt und gespeichert  
+
+**Hauptszenario:**  
+1. Nutzer öffnet einen Artikel.  
+2. Nutzer fordert KI-Verifikation an.  
+3. System startet automatischen Faktencheck.  
+4. System zeigt das KI-Ergebnis an.  
+
+---
+
+### UC6: Artikel für Prüfung zuweisen
+
+**Primärakteur:** Admin  
+**Stakeholder:** Faktenchecker, Autor  
+**Vorbedingungen:**  
+- Admin ist authentifiziert  
+- Zu prüfender Artikel existiert  
+
+**Nachbedingungen:**  
+- Artikel wurde einem Faktenchecker zur Prüfung zugewiesen  
+
+**Hauptszenario:**  
+1. Admin öffnet die Liste der Artikel.  
+2. Admin wählt einen Artikel und einen Faktenchecker aus.  
+3. System ordnet den Artikel dem Faktenchecker zu.  
+4. Faktenchecker erhält eine Benachrichtigung.  
+
+---
+
+### UC7: Benutzer verwalten
+
+**Primärakteur:** Admin  
+**Stakeholder:** Alle Nutzer  
+**Vorbedingungen:**  
+- Admin ist authentifiziert  
+
+**Nachbedingungen:**  
+- Benutzer wurde erstellt, bearbeitet, gesperrt oder gelöscht  
+
+**Hauptszenario:**  
+1. Admin öffnet die Benutzerverwaltung.  
+2. System zeigt eine Liste aller Benutzer.  
+3. Admin erstellt, bearbeitet oder löscht einen Benutzer.  
+4. System speichert die Änderungen.  
+
+---
+
+### UC8: Faktenchecks erstellen
+
+**Primärakteur:** Faktenchecker, Admin  
+**Stakeholder:** Autor, Leser  
+**Vorbedingungen:**  
+- Faktenchecker/Admin ist authentifiziert  
+- Artikel existiert im Status CHECKING oder PUBLISHED  
+
+**Nachbedingungen:**  
+- Ein neuer Faktencheck wurde für einen Artikel angelegt  
+
+**Hauptszenario:**  
+1. Faktenchecker/Admin wählt einen Artikel zur Überprüfung.  
+2. System zeigt das Eingabeformular für den Faktencheck.  
+3. Faktenchecker/Admin gibt Bewertung und Begründung ein.  
+4. System speichert den Faktencheck.  
 
 ## Fachliches Datenmodell 
 ![ER-Diagramm](/doc/Graphs/ER-diagram.drawio.svg)
