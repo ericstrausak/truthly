@@ -11,28 +11,27 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class MongoTestControllerIntegrationTest {
+class MongoTestControllerCoverageTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("Should test MongoDB connection in integration environment")
-    void shouldTestMongoDBConnectionInIntegrationEnvironment() throws Exception {
+    @DisplayName("Should test MongoDB connection endpoint")
+    void shouldTestMongoDBConnectionEndpoint() throws Exception {
         mockMvc.perform(get("/testmongodb"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Connection ok")));
     }
 
     @Test
-    @DisplayName("Should handle multiple concurrent requests")
-    void shouldHandleMultipleConcurrentRequests() throws Exception {
-        // Test multiple requests to ensure thread safety
+    @DisplayName("Should handle multiple requests consistently")
+    void shouldHandleMultipleRequestsConsistently() throws Exception {
+        // Test multiple times to increase coverage
         for (int i = 0; i < 5; i++) {
             mockMvc.perform(get("/testmongodb"))
                     .andExpect(status().isOk())
@@ -41,22 +40,29 @@ class MongoTestControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Should maintain consistent behavior across requests")
-    void shouldMaintainConsistentBehaviorAcrossRequests() throws Exception {
-        String firstResponse = mockMvc.perform(get("/testmongodb"))
+    @DisplayName("Should return text response")
+    void shouldReturnTextResponse() throws Exception {
+        mockMvc.perform(get("/testmongodb"))
                 .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+                .andExpect(content().contentType("text/plain;charset=UTF-8"));
+    }
 
-        String secondResponse = mockMvc.perform(get("/testmongodb"))
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+    @Test
+    @DisplayName("Should use GET method")
+    void shouldUseGetMethod() throws Exception {
+        // Test that only GET is supported
+        mockMvc.perform(post("/testmongodb"))
+                .andExpect(status().isMethodNotAllowed());
+    }
 
-        // Both should be success responses
-        assertTrue(firstResponse.contains("Connection ok"));
-        assertTrue(secondResponse.contains("Connection ok"));
+    @Test
+    @DisplayName("Should handle case sensitive URL")
+    void shouldHandleCaseSensitiveUrl() throws Exception {
+        // Test case sensitivity
+        mockMvc.perform(get("/TESTMONGODB"))
+                .andExpect(status().isNotFound());
+                
+        mockMvc.perform(get("/TestMongoDB"))
+                .andExpect(status().isNotFound());
     }
 }

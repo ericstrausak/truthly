@@ -119,10 +119,11 @@ class ArticleServiceControllerTest {
     }
 
     @Test
-    @DisplayName("Should handle null values in assign article request")
-    void shouldHandleNullValuesInAssignArticleRequest() throws Exception {
+    @DisplayName("Should handle empty string values in assign article request")
+    void shouldHandleEmptyStringValuesInAssignArticleRequest() throws Exception {
         ArticleStateChangeDTO dto = new ArticleStateChangeDTO();
-        // Leave articleId and checkerId as null
+        dto.setArticleId(""); // Empty string instead of null
+        dto.setCheckerId(""); // Empty string instead of null
 
         mockMvc.perform(put("/api/service/assignarticle")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -131,10 +132,12 @@ class ArticleServiceControllerTest {
     }
 
     @Test
-    @DisplayName("Should handle null values in complete checking request")
-    void shouldHandleNullValuesInCompleteCheckingRequest() throws Exception {
+    @DisplayName("Should handle empty string values in complete checking request")
+    void shouldHandleEmptyStringValuesInCompleteCheckingRequest() throws Exception {
         FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
-        // Leave all fields as null
+        dto.setArticleId(""); // Empty string instead of null
+        dto.setCheckerId(""); // Empty string instead of null
+        dto.setResult(""); // Empty string instead of null
 
         mockMvc.perform(put("/api/service/completechecking")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -169,6 +172,88 @@ class ArticleServiceControllerTest {
         dto.setArticleId(testArticle.getId());
         dto.setCheckerId(testChecker.getId());
         dto.setResult("   "); // Whitespace only
+
+        mockMvc.perform(put("/api/service/completechecking")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle invalid article ID format in assign article")
+    void shouldHandleInvalidArticleIdFormatInAssignArticle() throws Exception {
+        ArticleStateChangeDTO dto = new ArticleStateChangeDTO();
+        dto.setArticleId("invalid-format-123");
+        dto.setCheckerId(testChecker.getId());
+
+        mockMvc.perform(put("/api/service/assignarticle")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle invalid checker ID format in assign article")
+    void shouldHandleInvalidCheckerIdFormatInAssignArticle() throws Exception {
+        ArticleStateChangeDTO dto = new ArticleStateChangeDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId("invalid-format-456");
+
+        mockMvc.perform(put("/api/service/assignarticle")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle malformed request body in assign article")
+    void shouldHandleMalformedRequestBodyInAssignArticle() throws Exception {
+        mockMvc.perform(put("/api/service/assignarticle")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"articleId\": \"test\", \"checkerId\": }")) // Malformed JSON
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle missing content type in assign article")
+    void shouldHandleMissingContentTypeInAssignArticle() throws Exception {
+        ArticleStateChangeDTO dto = new ArticleStateChangeDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId(testChecker.getId());
+
+        mockMvc.perform(put("/api/service/assignarticle")
+                .content(objectMapper.writeValueAsString(dto))) // No content type
+                .andExpect(status().isUnsupportedMediaType());
+    }
+
+    @Test
+    @DisplayName("Should handle case sensitive result strings")
+    void shouldHandleCaseSensitiveResultStrings() throws Exception {
+        // Set article to checking status
+        testArticle.setStatus(ArticleStatus.CHECKING);
+        articleRepository.save(testArticle);
+
+        FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId(testChecker.getId());
+        dto.setResult("verified"); // lowercase instead of VERIFIED
+
+        mockMvc.perform(put("/api/service/completechecking")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle whitespace in result strings")
+    void shouldHandleWhitespaceInResultStrings() throws Exception {
+        testArticle.setStatus(ArticleStatus.CHECKING);
+        articleRepository.save(testArticle);
+
+        FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId(testChecker.getId());
+        dto.setResult(" VERIFIED "); // With whitespace
 
         mockMvc.perform(put("/api/service/completechecking")
                 .contentType(MediaType.APPLICATION_JSON)
