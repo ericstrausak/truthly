@@ -35,28 +35,46 @@ public class ArticleController {
     UserService userService;
 
     @PostMapping("/article")
-    public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
-        try {
-            // Check if the author exists
-            if (!userService.userExists(articleDTO.getAuthorId())) {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
-
-            // Use the constructor we created - das übergibt ArticleType korrekt!
-            Article article = new Article(
-                    articleDTO.getTitle(),
-                    articleDTO.getContent(),
-                    articleDTO.getAuthorId(),
-                    articleDTO.isAnonymous(),
-                    articleDTO.getArticleType() // WICHTIG: Wird jetzt korrekt übernommen!
-            );
-
-            Article savedArticle = articleRepository.save(article);
-            return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
+    try {
+        // Validate required fields
+        if (articleDTO.getTitle() == null || articleDTO.getTitle().trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        
+        if (articleDTO.getContent() == null || articleDTO.getContent().trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        
+        if (articleDTO.getAuthorId() == null || articleDTO.getAuthorId().trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        // Check if the author exists
+        if (!userService.userExists(articleDTO.getAuthorId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        // Create Article object
+        Article article = new Article();
+        article.setTitle(articleDTO.getTitle().trim());
+        article.setContent(articleDTO.getContent().trim());
+        article.setAuthorId(articleDTO.getAuthorId());
+        article.setAnonymous(articleDTO.isAnonymous());
+        
+        // Set article type with default if null
+        if (articleDTO.getArticleType() != null) {
+            article.setArticleType(articleDTO.getArticleType());
+        } else {
+            article.setArticleType(ArticleType.NEWS); // Default type
+        }
+        
+        Article savedArticle = articleRepository.save(article);
+        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
+    } catch (Exception e) {
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
     @GetMapping("/article")
     public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false) String type) {
