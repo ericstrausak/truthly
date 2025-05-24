@@ -3,6 +3,7 @@ package ch.zhaw.truthly.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import ch.zhaw.truthly.model.Article;
@@ -35,6 +36,7 @@ public class ArticleController {
     UserService userService;
 
     @PostMapping("/article")
+    @PreAuthorize("hasRole('AUTHOR') or hasRole('ADMIN')")
 public ResponseEntity<Article> createArticle(@RequestBody ArticleCreateDTO articleDTO) {
     try {
         // Validate required fields
