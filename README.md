@@ -269,41 +269,8 @@ graph TB
 - 6a. Bewertung stimmt nicht mit KI überein → System markiert zur Review
 
 ## Fachliches Datenmodell 
+![ER-Diagramm](/doc/Graphs/ER-diagram.drawio.svg)
 
-```mermaid
-erDiagram
-    USER ||--o{ ARTICLE : writes
-    USER ||--o{ FACTCHECK : performs
-    ARTICLE ||--o{ FACTCHECK : has
-    
-    USER {
-        string username
-        string email
-        string password
-        string role
-        date registrationDate
-    }
-    
-    ARTICLE {
-        string title
-        string content
-        string authorReference
-        date publicationDate
-        string status
-        boolean isAnonymous
-        string articleType
-    }
-    
-    FACTCHECK {
-        string articleReference
-        string checkerReference
-        string result
-        string description
-        date checkDate
-        string aiVerificationResult
-        string aiExplanation
-    }
-```
 
 ## Erläuterungen zum Datenmodell 
 
