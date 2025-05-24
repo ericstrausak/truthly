@@ -1,6 +1,5 @@
 package ch.zhaw.truthly.controller;
 
-
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -110,4 +109,71 @@ class ArticleServiceControllerTest {
                 .param("author", "invalid-id"))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @DisplayName("Should handle empty author ID in aggregation request")
+    void shouldHandleEmptyAuthorIdInAggregation() throws Exception {
+        mockMvc.perform(get("/api/service/articledashboard")
+                .param("author", ""))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle null values in assign article request")
+    void shouldHandleNullValuesInAssignArticleRequest() throws Exception {
+        ArticleStateChangeDTO dto = new ArticleStateChangeDTO();
+        // Leave articleId and checkerId as null
+
+        mockMvc.perform(put("/api/service/assignarticle")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle null values in complete checking request")
+    void shouldHandleNullValuesInCompleteCheckingRequest() throws Exception {
+        FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
+        // Leave all fields as null
+
+        mockMvc.perform(put("/api/service/completechecking")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle empty result string in complete checking")
+    void shouldHandleEmptyResultStringInCompleteChecking() throws Exception {
+        testArticle.setStatus(ArticleStatus.CHECKING);
+        articleRepository.save(testArticle);
+
+        FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId(testChecker.getId());
+        dto.setResult(""); // Empty string
+
+        mockMvc.perform(put("/api/service/completechecking")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("Should handle whitespace-only result string")
+    void shouldHandleWhitespaceOnlyResultString() throws Exception {
+        testArticle.setStatus(ArticleStatus.CHECKING);
+        articleRepository.save(testArticle);
+
+        FactCheckCompleteDTO dto = new FactCheckCompleteDTO();
+        dto.setArticleId(testArticle.getId());
+        dto.setCheckerId(testChecker.getId());
+        dto.setResult("   "); // Whitespace only
+
+        mockMvc.perform(put("/api/service/completechecking")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isBadRequest());
+    }
+
 }
