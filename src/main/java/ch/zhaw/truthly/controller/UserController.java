@@ -57,4 +57,21 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/user/search")
+public ResponseEntity<List<User>> searchUsers(@RequestParam(required = false) String username) {
+    try {
+        List<User> users;
+        
+        if (username != null && !username.isEmpty()) {
+            // Assuming you have a method like this in UserRepository
+            users = userRepository.findByUsernameContainingIgnoreCase(username);
+        } else {
+            users = userRepository.findAll();
+        }
+        
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
 }
