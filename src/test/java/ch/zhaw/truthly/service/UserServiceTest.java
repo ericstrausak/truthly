@@ -24,30 +24,32 @@ class UserServiceTest {
     @Test
     @DisplayName("Should return true when user exists")
     void shouldReturnTrueWhenUserExists() {
-        // Given
-        String userId = "user123";
-        when(userRepository.existsById(userId)).thenReturn(true);
-
-        // When
-        boolean result = userService.userExists(userId);
-
-        // Then
-        assertTrue(result);
-        verify(userRepository).existsById(userId);
+        when(userRepository.existsById("valid-id")).thenReturn(true);
+        assertTrue(userService.userExists("valid-id"));
+        verify(userRepository).existsById("valid-id");
     }
 
     @Test
     @DisplayName("Should return false when user does not exist")
     void shouldReturnFalseWhenUserDoesNotExist() {
-        // Given
-        String userId = "nonexistent";
-        when(userRepository.existsById(userId)).thenReturn(false);
+        when(userRepository.existsById("invalid-id")).thenReturn(false);
+        assertFalse(userService.userExists("invalid-id"));
+        verify(userRepository).existsById("invalid-id");
+    }
 
-        // When
-        boolean result = userService.userExists(userId);
+    @Test
+    @DisplayName("Should handle null user ID")
+    void shouldHandleNullUserId() {
+        when(userRepository.existsById(null)).thenReturn(false);
+        assertFalse(userService.userExists(null));
+        verify(userRepository).existsById(null);
+    }
 
-        // Then
-        assertFalse(result);
-        verify(userRepository).existsById(userId);
+    @Test
+    @DisplayName("Should handle empty user ID")
+    void shouldHandleEmptyUserId() {
+        when(userRepository.existsById("")).thenReturn(false);
+        assertFalse(userService.userExists(""));
+        verify(userRepository).existsById("");
     }
 }
