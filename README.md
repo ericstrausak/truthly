@@ -3,7 +3,7 @@
 Eine sichere, transparente und community-getriebene Nachrichtenplattform für unabhängigen Journalismus mit integrierter Faktenprüfung.
 
 [![Test Coverage](https://img.shields.io/badge/coverage-85%25-yellow.svg)](./target/site/jacoco/index.html)
-[![Build Status](https://github.com/yourusername/truthly/actions/workflows/azure-deploy.yml/badge.svg)](https://github.com/yourusername/truthly/actions)
+[![Build Status](https://github.com/yourusername/truthly/actions/workflows/azure-deploy.yml/badge.svg)](https://github.com/ericstrausak/truthly/actions)
 
 # Inhaltsverzeichnis
 - [Einleitung](#einleitung)
